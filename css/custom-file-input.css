@@ -1,0 +1,128 @@
+.js .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    max-width: 80%;
+    /* 20px */
+    font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+    /* 10px 20px */
+}
+
+.no-js .inputfile + label {
+    display: none;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile + label * {
+    /* pointer-events: none; */
+    /* in case of FastClick lib use */
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    /* 4px */
+    margin-right: 0.25em;
+    /* 4px */
+}
+
+
+/* style 1 */
+
+.inputfile-default + label {
+    color: #787878;
+    background-color: #f3f3f3;
+	font-size: 14px;
+	line-height:14px;
+	text-transform:uppercase;
+	font-weight:400;
+	border-radius:2px;
+	padding: 17px 25px;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.inputfile-default:focus + label,
+.inputfile-default.has-focus + label,
+.inputfile-default + label:hover {
+    background-color: #722040;
+    color: #fff;
+}
+
+/* style 2 */
+
+.inputfile-icon + label {
+    color: #787878;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.inputfile-icon:focus + label,
+.inputfile-icon.has-focus + label,
+.inputfile-icon + label:hover {
+    color: #722040;
+}
+
+.inputfile-icon + label span.figure {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #f3f3f3;
+    display: block;
+    padding: 20px;
+    margin: 0 auto 10px;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.inputfile-icon:focus + label span.figure,
+.inputfile-icon.has-focus + label span.figure,
+.inputfile-icon + label:hover span.figure {
+    background-color: #722040;
+}
+
+.inputfile-icon + label svg {
+    width: 100%;
+    height: 100%;
+    fill: #b8b8b8;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.inputfile-icon:hover + label svg,
+.inputfile-icon:focus + label svg,
+.inputfile-icon + label:hover svg {
+    fill: #fff;
+}
