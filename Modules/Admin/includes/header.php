@@ -14,5 +14,5 @@
     <link rel="stylesheet" href="assets/css/app.css" type="text/css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.materialdesignicons.com/4.4.95/css/materialdesignicons.min.css">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--Sweet alert js-->
+    <script src="assets/lib/sweetjs/swal.js"></script><!--Sweet alert js-->
   </head>
