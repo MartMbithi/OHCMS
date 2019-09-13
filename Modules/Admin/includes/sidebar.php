@@ -93,6 +93,12 @@
                       <li><a href="ohcms_admin_pages_manage_kb.php">Manage</a></li>                  
                     </ul>
                   </li>
+                  <li class="parent active"><a href="#"><i class="icon mdi mdi-sitemap"></i><span>Departments</span></a>
+                    <ul class="sub-menu">
+                      <li><a href="ohcms_admin_pages_department_create.php">Create</a></li>
+                      <li><a href="ohcms_admin_pages_department_manage.php">Manage</a></li>                  
+                    </ul>
+                  </li>
                   <li class="parent active"><a href="#"><i class="icon mdi mdi-cogs"></i><span>Admin Settings</span></a>
                     <ul class="sub-menu">
                       <li><a href="ohcms_admin_pages_module_settings.php">Module Settings</a></li>

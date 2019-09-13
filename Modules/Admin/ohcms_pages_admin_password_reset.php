@@ -8,20 +8,20 @@
                 // $lname=$_POST['lname'];
                   //$id_no=$_POST['id_no'];
                   $email=$_POST['email'];
-                  $uname=$_POST['uname'];
-                //  $token=$_POST['token'];
+                  //$uname=$_POST['uname'];
+                  $token = sha1(mt_rand(1, 90000).$_POST['token']);
                   //$acc_status=$_POST['acc_status'];
                   //$dpic=$_FILES["dpic"]["name"];
                   //move_uploaded_file($_FILES["dpic"]["tmp_name"],"../client/img/".$_FILES["dpic"]["name"]);
                   
               //sql to inset the values to the database
-                  $query="insert into admin_password_resets (email, uname) values(?,?)";
+                  $query="insert into admin_password_resets (email, token) values(?,?)";
                   $stmt = $mysqli->prepare($query);
                   //bind the submitted values with the matching columns in the database.
-                  $rc=$stmt->bind_param('ss', $email, $uname);
+                  $rc=$stmt->bind_param('ss', $email, $token);
                   $stmt->execute();
                   
-                  $msg = "Your Password Reset Details Will Be Send To Your Email Address!";
+                  $msg = "Password Reset Details Will Be Sent To Your Email!";
                   
               }
               ?>
@@ -63,16 +63,17 @@
                   <?php } ?>
 
                 <form method ="post">
-                  <div class="form-group">
-                    <input class="form-control" name="email" id="username" type="email" placeholder="Email" autocomplete="off">
+                <div class="form-group">
+                    <input class="form-control" name="token" id="username" type="text" placeholder="Username" autocomplete="off">
                   </div>
                   <div class="form-group">
-                    <input class="form-control" name="uname" id="username" type="text" placeholder="Username" autocomplete="off">
-                  </div>                  
+                    <input class="form-control" name="email" id="username" type="email" placeholder="Email" autocomplete="off">
+                  </div>                                   
                   <div class="form-group row login-tools">
                   </div>
                   <div class="form-group login-submit"><input type="submit" class="btn btn-primary btn-xl" name="password_reset" data-dismiss="modal" value="Reset Password"></div>
                 </form>
+                     <div class="splash-footer"><span>Remembered Pssword? <a href="ohcms_admin_login.php">Login</a></span></div>
 
               </div>
             </div>

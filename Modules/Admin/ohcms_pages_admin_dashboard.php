@@ -110,21 +110,27 @@ $aid=$_SESSION['admin_id'];
                     <thead>
                       <tr>
                         <th style="width:20%;">Name</th>
-                        <th style="width:20%;">Employee Number</th>
-                        <th style="width:20%;">National Id No.</th>
-                        <th style="width:20%;">Phone</th>
                         <th style="width:20%;">Department</th>
                       </tr>
                     </thead>
+                    <?php
+                                            
+                        $ret="SELECT * FROM departments ORDER BY RAND() LIMIT 100  ";
+                        $stmt= $mysqli->prepare($ret) ;
+                        //$stmt->bind_param('i',$aid);
+                        $stmt->execute() ;//ok
+                        $res=$stmt->get_result();
+                        $cnt=1;
+                        while($row=$res->fetch_object())
+                          {
+                    	?>
                     <tbody class="no-border-x">
                       <tr>
-                        <td>Sony Xperia M4</td>
-                        <td>$149</td>
-                        <td>Aug 23, 2018</td>
-                        <td class="text-success">Completed</td>
-                        <td class="text-success">Completed</td>
+                        <td class="text-success"><?php echo $row->dept_name;?></td>
+                        <td class="text-success"><?php echo $row->dept_head;?></td>
                       </tr>                     
                     </tbody>
+                    <?php $cnt= $cnt+1; }?>
                   </table>
                 </div>
               </div>
@@ -140,22 +146,32 @@ $aid=$_SESSION['admin_id'];
                   <table class="table table-striped table-borderless">
                     <thead>
                       <tr>
-                        <th style="width:40%;">Product</th>
-                        <th class="number">Price</th>
-                        <th style="width:20%;"> Date</th>
-                        <th style="width:20%;">State</th>
-                        <th class="actions" style="width:5%;">Category</th>
+                        <th style="width:20%;">Product</th>
+                        <th style="width:20%;">Vendor</th>
+                        <th style="width:20%;">Date Purchased</th>
+                        <th style="width:20%;">Category</th>
                       </tr>
                     </thead>
+                    <?php
+                                            
+                        $ret="SELECT * FROM pharmaceuticals ORDER BY RAND() LIMIT 100  ";
+                        $stmt= $mysqli->prepare($ret) ;
+                        //$stmt->bind_param('i',$aid);
+                        $stmt->execute() ;//ok
+                        $res=$stmt->get_result();
+                        $cnt=1;
+                        while($row=$res->fetch_object())
+                          {
+                    	?>
                     <tbody class="no-border-x">
                       <tr>
-                        <td>Sony Xperia M4</td>
-                        <td class="number">$149</td>
-                        <td>Aug 23, 2018</td>
-                        <td class="text-success">Completed</td>
-                        <td class="actions"><a class="icon" href="#"><i class="mdi mdi-plus-circle-o"></i></a></td>
+                        <td><?php echo $row->pharm_name;?></td>
+                        <td class="number"><?php echo $row->pharm_vendor;?></td>
+                        <td><?php echo $row->pharm_pur_date;?></td>
+                        <td class="text-success"><?php echo $row->pharm_cat ;?></td>
                       </tr>                     
                     </tbody>
+                    <?php $cnt = $cnt+1; }?>
                   </table>
                 </div>
               </div>
@@ -174,13 +190,25 @@ $aid=$_SESSION['admin_id'];
                         <th>Date Added</th>
                       </tr>
                     </thead>
+                    <?php
+                                            
+                        $ret="SELECT * FROM patients ORDER BY RAND() LIMIT 100  ";
+                        $stmt= $mysqli->prepare($ret) ;
+                        //$stmt->bind_param('i',$aid);
+                        $stmt->execute() ;//ok
+                        $res=$stmt->get_result();
+                        $cnt=1;
+                        while($row=$res->fetch_object())
+                          {
+                    	?>
                     <tbody>
                       <tr>
-                        <td class="user-avatar"> <img src="assets/img/avatar6.png" alt="Avatar">Penelope Thornton</td>
-                        <td>Topbar dropdown style</td>
-                        <td>Aug 16, 2018</td>
+                        <td><?php echo $row->p_fname;?> <?php echo $row->p_lname;?></td>
+                        <td><?php echo $row->p_type;?></td>
+                        <td><?php echo $row->created_at;?></td>
                       </tr>
                     </tbody>
+                          <?php $cnt =$cnt+1; }?>
                   </table>
                 </div>
               </div>
