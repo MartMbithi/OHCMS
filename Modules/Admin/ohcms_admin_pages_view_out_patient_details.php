@@ -4,16 +4,7 @@ include('assets/configs/config.php');
 include('assets/configs/checklogin.php');
 check_login();
 $aid=$_SESSION['admin_id'];
-if(isset($_GET['del']))
-{
-	$id=intval($_GET['del']);
-	$adn="delete from assets where id=?";
-		$stmt= $mysqli->prepare($adn);
-		$stmt->bind_param('i',$id);
-        $stmt->execute();
-        $stmt->close();	   
-        $msg ="Equipment Details Removed";
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -61,28 +52,13 @@ if(isset($_GET['del']))
                   <div class="col-sm-7">
                     <div class="invoice-logo"></div>
                   </div>
-                  <div class="col-sm-5 invoice-order"><span class="invoice-id">Patient Id #<?php echo $row->p_id;?></span><span class="incoice-date"><?php echo $row->created_at;?></span></div>
+                  <div class="col-sm-5 invoice-order"><span class="invoice-id">Patient Number #<?php echo $row->p_id;?></span></div>
                 </div>
                 <div class="row invoice-data">
-                  <div class="col-sm-5 invoice-person">Name: <span class="name"><?php echo $row->p_fname;?> <?php echo $row->p_lname;?></span>Address :<span><?php echo $row->p_address;?></span> Age :<span><?php echo $row->p_age;?> Years Old</span></div>
+                  <div class="col-sm-5 invoice-person">Name :<span class="name"><?php echo $row->p_fname;?> <?php echo $row->p_lname;?></span>Address :<span><?php echo $row->p_address;?></span>Age:<span><?php echo $row->p_age;?></span></div>
                   <div class="col-sm-2 invoice-payment-direction"></i></div>
-                  <div class="col-sm-5 invoice-person"><span class="name"></span><span></span><span></span><span></span><span></span></div>
+                  <div class="col-sm-5 invoice-person">Registration Date: <span class="name"><?php echo $row->created_at;?></span>Ailment<span><?php echo $row->p_ailment;?></span><span></span><span></span><span></span></div>
                 </div>
-                <div class="row">
-                  <div class="col-lg-12">
-                    <table class="invoice-details">
-                      <tr>
-                        <th style="width:60%;">Laboratory Tests</th>
-                        <th class="amount" style="width:15%;">Laboratory Results</th>
-                      </tr>
-                      <tr>
-                        <td class="description"><?php echo $row->p_lab_tests;?></td>
-                        <td class="amount"><?php echo $row->p_lab_results;?></td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-
                 <div class="row invoice-footer">
                   <div class="col-lg-12">
                     <button id="print" onclick="printContent('printDetails');" class="btn btn-lg btn-space btn-success">Print</button>

@@ -31,6 +31,7 @@ $aid=$_SESSION['admin_id'];
                   <table class="table table-striped table-borderless">
                     <thead>
                       <tr>
+                      <th>#</th>
                         <th style="width:20%;">Employee Name</th>
                         <th style="width:20%;">Email Address</th>
                         <th style="width:20%;">Mobile Number</th>
@@ -50,6 +51,7 @@ $aid=$_SESSION['admin_id'];
                     	?>
                     <tbody class="no-border-x">
                       <tr>
+                        <td><?php echo $cnt;?></td>
                         <td><?php echo $row->em_fname;?> <?php echo $row->em_lname;?></td>
                         <td><?php echo $row->em_email;?></td>
                         <td><?php echo $row->em_phone;?></td>
