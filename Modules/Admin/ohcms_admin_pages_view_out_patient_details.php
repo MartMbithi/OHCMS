@@ -4,7 +4,9 @@ include('assets/configs/config.php');
 include('assets/configs/checklogin.php');
 check_login();
 $aid=$_SESSION['admin_id'];
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <!--Header-->
@@ -19,53 +21,55 @@ $aid=$_SESSION['admin_id'];
      <!--Sidebar-->
      <?php include("includes/sidebar.php");?>
      <!--Sidebar-->
+     <?php	
+                    $p_id=$_GET['p_id'];
+                    $ret="select * from patients where p_id=?";
+                    //code for getting rooms using a certain id
+                    $stmt= $mysqli->prepare($ret) ;
+                    $stmt->bind_param('i',$p_id);
+                    $stmt->execute() ;//ok
+                    $res=$stmt->get_result();
+                    //$cnt=1;
+                    while($row=$res->fetch_object())
+                    {
+                ?>
       <div class="be-content">
-        <div class="main-content container-fluid">
+        <div id="printDetails" class="main-content container-fluid">
           <div class="row">
+            <script>
+                function printContent(el){
+                var restorepage = $('body').html();
+                var printcontent = $('#' + el).clone();
+                $('body').empty().html(printcontent);
+                window.print();
+                $('body').html(restorepage);
+                }
+             </script>
             <div class="col-12 col-lg-12">
-              <div class="card card-table">
-                <div class="card-header">
-                  <div class="title">Registration Desk Employees</div>
+              <div class="invoice">
+              
+                <div class="row invoice-header">
+                  <div class="col-sm-7">
+                    <div class="invoice-logo"></div>
+                  </div>
+                  <div class="col-sm-5 invoice-order"><span class="invoice-id">Patient Number #<?php echo $row->p_id;?></span></div>
                 </div>
-                <div class="card-body table-responsive">
-                  <table class="table table-striped table-borderless">
-                    <thead>
-                      <tr>
-                      <th>#</th>
-                        <th style="width:20%;">Employee Name</th>
-                        <th style="width:20%;">Email Address</th>
-                        <th style="width:20%;">Mobile Number</th>
-                        <th style="width:20%;">National ID No.</th>
-                      </tr>
-                    </thead>
-                    <?php
-                                            
-                        $ret="SELECT * FROM hospital_employees Where em_dept = 'Registration Desk' ";
-                        $stmt= $mysqli->prepare($ret) ;
-                        //$stmt->bind_param('i',$aid);
-                        $stmt->execute() ;//ok
-                        $res=$stmt->get_result();
-                        $cnt=1;
-                        while($row=$res->fetch_object())
-                          {
-                    	?>
-                    <tbody class="no-border-x">
-                      <tr>
-                        <td><?php echo $cnt;?></td>
-                        <td><?php echo $row->em_fname;?> <?php echo $row->em_lname;?></td>
-                        <td><?php echo $row->em_email;?></td>
-                        <td><?php echo $row->em_phone;?></td>
-                        <td><?php echo $row->em_idno;?></td>
-                      </tr>                     
-                    </tbody>
-                    <?php $cnt= $cnt+1; }?>
-                  </table>
+                <div class="row invoice-data">
+                  <div class="col-sm-5 invoice-person">Name :<span class="name"><?php echo $row->p_fname;?> <?php echo $row->p_lname;?></span>Address :<span><?php echo $row->p_address;?></span>Age:<span><?php echo $row->p_age;?></span></div>
+                  <div class="col-sm-2 invoice-payment-direction"></i></div>
+                  <div class="col-sm-5 invoice-person">Registration Date: <span class="name"><?php echo $row->created_at;?></span>Ailment<span><?php echo $row->p_ailment;?></span><span></span><span></span><span></span></div>
+                </div>
+                <div class="row invoice-footer">
+                  <div class="col-lg-12">
+                    <button id="print" onclick="printContent('printDetails');" class="btn btn-lg btn-space btn-success">Print</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>          
         </div>
       </div>
+                    <?php }?>
       
     </div>
     <script src="assets/lib/jquery/jquery.min.js" type="text/javascript"></script>

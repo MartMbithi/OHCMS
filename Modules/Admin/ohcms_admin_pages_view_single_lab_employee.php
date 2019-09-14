@@ -7,12 +7,12 @@ $aid=$_SESSION['admin_id'];
 if(isset($_GET['del']))
 {
 	$id=intval($_GET['del']);
-	$adn="delete from hospital_employees where id=?";
+	$adn="delete from assets where id=?";
 		$stmt= $mysqli->prepare($adn);
 		$stmt->bind_param('i',$id);
         $stmt->execute();
         $stmt->close();	   
-        $msg ="Employee Details Removed";
+        $msg ="Equipment Details Removed";
 }
 ?>
 
@@ -30,58 +30,55 @@ if(isset($_GET['del']))
      <!--Sidebar-->
      <?php include("includes/sidebar.php");?>
      <!--Sidebar-->
+     <?php	
+                    $p_id=$_GET['em_id'];
+                    $ret="select * from hospital_employees where em_id=?";
+                    //code for getting rooms using a certain id
+                    $stmt= $mysqli->prepare($ret) ;
+                    $stmt->bind_param('i',$p_id);
+                    $stmt->execute() ;//ok
+                    $res=$stmt->get_result();
+                    //$cnt=1;
+                    while($row=$res->fetch_object())
+                    {
+                ?>
       <div class="be-content">
-        <div class="main-content container-fluid">
+        <div id="printDetails" class="main-content container-fluid">
           <div class="row">
+            <script>
+                function printContent(el){
+                var restorepage = $('body').html();
+                var printcontent = $('#' + el).clone();
+                $('body').empty().html(printcontent);
+                window.print();
+                $('body').html(restorepage);
+                }
+             </script>
             <div class="col-12 col-lg-12">
-              <div class="card card-table">
-                <div class="card-header">
-                  <div class="title">Manage Lab Employees</div>
+              <div class="invoice">
+              
+                <div class="row invoice-header">
+                  <div class="col-sm-7">
+                    <div class="invoice-logo"></div>
+                  </div>
+                  <div class="col-sm-5 invoice-order"><span class="invoice-id">Employee National ID <?php echo $row->em_idno;?></span></div>
                 </div>
-                <div class="card-body table-responsive">
-                  <table class="table table-striped table-borderless">
-                    <thead>
-                      <tr>
-                      <th>#</th>
-                        <th style="width:20%;">Employee Name</th>
-                        <th style="width:20%;">Email Address</th>
-                        <th style="width:20%;">Mobile Number</th>
-                        <th style="width:20%;">National ID No.</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <?php
-                                            
-                        $ret="SELECT * FROM hospital_employees Where em_dept = 'Laboratory' ";
-                        $stmt= $mysqli->prepare($ret) ;
-                        //$stmt->bind_param('i',$aid);
-                        $stmt->execute() ;//ok
-                        $res=$stmt->get_result();
-                        $cnt=1;
-                        while($row=$res->fetch_object())
-                          {
-                    	?>
-                    <tbody class="no-border-x">
-                      <tr>
-                      <td><?php echo $cnt;?></td>
-                        <td><?php echo $row->em_fname;?> <?php echo $row->em_lname;?></td>
-                        <td><?php echo $row->em_email;?></td>
-                        <td><?php echo $row->em_phone;?></td>
-                        <td><?php echo $row->em_idno;?></td>
-                        <td><a href='ohcms_admin_pages_manage_lab_employee.php?del=<?php echo $row->em_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
-                            <a href='ohcms_admin_pages_manage_single_lab_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-check-circle"></i></a>
-                            <a href='ohcms_admin_pages_view_single_lab_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
-                        </td> 
-                      </tr>                     
-                    </tbody>
-                    <?php $cnt= $cnt+1; }?>
-                  </table>
+                <div class="row invoice-data">
+                  <div class="col-sm-5 invoice-person">Name :<span class="name"><?php echo $row->em_fname;?> <?php echo $row->em_lname;?></span>Address :<span><?php echo $row->em_address;?></span>Phone :<span><?php echo $row->em_phone;?></span></div>
+                  <div class="col-sm-2 invoice-payment-direction"></i></div>
+                  <div class="col-sm-5 invoice-person">Department: <span class="name"><?php echo $row->em_dept;?></span>Email :<span><?php echo $row->em_email;?></span><span></span><span></span><span></span></div>
+                </div>
+                <div class="row invoice-footer">
+                  <div class="col-lg-12">
+                    <button id="print" onclick="printContent('printDetails');" class="btn btn-lg btn-space btn-success">Print</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>          
         </div>
       </div>
+                    <?php }?>
       
     </div>
     <script src="assets/lib/jquery/jquery.min.js" type="text/javascript"></script>

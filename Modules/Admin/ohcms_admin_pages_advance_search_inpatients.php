@@ -7,7 +7,7 @@ $aid=$_SESSION['admin_id'];
 if(isset($_GET['del']))
 {
 	$id=intval($_GET['del']);
-	$adn="delete from hospital_employees where id=?";
+	$adn="delete from patients where p_id=?";
 		$stmt= $mysqli->prepare($adn);
 		$stmt->bind_param('i',$id);
         $stmt->execute();
@@ -36,23 +36,32 @@ if(isset($_GET['del']))
             <div class="col-12 col-lg-12">
               <div class="card card-table">
                 <div class="card-header">
-                  <div class="title">Manage Lab Employees</div>
+                  <div class="title">OutPatient Employees</div>
                 </div>
+                <?php if(isset($msg)) {?>
+                    <script>
+                                setTimeout(function () 
+                                { 
+                                    swal("Success!","<?php echo $error;?>!","success");
+                                },
+                                    100);
+                    </script>
+                  
+                  <?php } ?>
                 <div class="card-body table-responsive">
                   <table class="table table-striped table-borderless">
                     <thead>
                       <tr>
-                      <th>#</th>
-                        <th style="width:20%;">Employee Name</th>
-                        <th style="width:20%;">Email Address</th>
-                        <th style="width:20%;">Mobile Number</th>
-                        <th style="width:20%;">National ID No.</th>
-                        <th>Action</th>
+                        <th>#</th>
+                        <th style="width:20%;">Name</th>
+                        <th style="width:20%;">Age</th>
+                        <th style="width:20%;">Address</th>
+                        <th style="width:20%;">Date Registred</th>
                       </tr>
                     </thead>
                     <?php
                                             
-                        $ret="SELECT * FROM hospital_employees Where em_dept = 'Laboratory' ";
+                        $ret="SELECT * FROM patients Where p_type = 'InPatient' ";
                         $stmt= $mysqli->prepare($ret) ;
                         //$stmt->bind_param('i',$aid);
                         $stmt->execute() ;//ok
@@ -63,15 +72,12 @@ if(isset($_GET['del']))
                     	?>
                     <tbody class="no-border-x">
                       <tr>
-                      <td><?php echo $cnt;?></td>
-                        <td><?php echo $row->em_fname;?> <?php echo $row->em_lname;?></td>
-                        <td><?php echo $row->em_email;?></td>
-                        <td><?php echo $row->em_phone;?></td>
-                        <td><?php echo $row->em_idno;?></td>
-                        <td><a href='ohcms_admin_pages_manage_lab_employee.php?del=<?php echo $row->em_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
-                            <a href='ohcms_admin_pages_manage_single_lab_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-check-circle"></i></a>
-                            <a href='ohcms_admin_pages_view_single_lab_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
-                        </td> 
+                        <td><?php echo $cnt;?></td>
+                        <td><?php echo $row->p_fname;?> <?php echo $row->p_lname;?></td>
+                        <td><?php echo $row->p_age;?></td>
+                        <td><?php echo $row->p_address;?></td>
+                        <td><?php echo $row->created_at;?></td>
+                        
                       </tr>                     
                     </tbody>
                     <?php $cnt= $cnt+1; }?>
