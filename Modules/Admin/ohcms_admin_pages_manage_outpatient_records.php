@@ -36,7 +36,7 @@ if(isset($_GET['del']))
             <div class="col-12 col-lg-12">
               <div class="card card-table">
                 <div class="card-header">
-                  <div class="title">Laboratory Employees</div>
+                  <div class="title">OutPatient Employees</div>
                 </div>
                 <?php if(isset($msg)) {?>
                     <script>
@@ -80,6 +80,8 @@ if(isset($_GET['del']))
                         <td><?php echo $row->created_at;?></td>
                         <td><a href='ohcms_admin_pages_manage_outpatient_records.php?del=<?php echo $row->p_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
                             <a href='ohcms_admin_pages_manage_single_patient.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-check-circle"></i></a>
+                            <a href='ohcms_admin_pages_view_out_patient_details.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
+
                         </td> 
                       </tr>                     
                     </tbody>

@@ -52,7 +52,7 @@ if(isset($_GET['del']))
                   <table class="table table-striped table-borderless">
                     <thead>
                       <tr>
-                      <th style="width:20%;">#</th>
+                      <th>#</th>
                         <th style="width:20%;">Employee Name</th>
                         <th style="width:20%;">Email Address</th>
                         <th style="width:20%;">Mobile Number</th>
@@ -79,8 +79,7 @@ if(isset($_GET['del']))
                         <td><?php echo $row->em_phone;?></td>
                         <td><?php echo $row->em_idno;?></td>
                         <td><a href='ohcms_admin_pages_manage_regdesk_employee.php?del=<?php echo $row->em_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
-                            <a href='ohcms_admin_pages_manage_single_regdesk_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-check-circle"></i></a>
-                        </td> 
+                            <a href='ohcms_admin_pages_manage_single_regdesk_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-check-circle"></i></a>                        </td> 
                       </tr>                     
                     </tbody>
                     <?php $cnt= $cnt+1; }?>
