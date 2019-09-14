@@ -7,12 +7,12 @@ $aid=$_SESSION['admin_id'];
 if(isset($_GET['del']))
 {
 	$id=intval($_GET['del']);
-	$adn="delete from hospital_employees where em_id=?";
+	$adn="delete from assets where id=?";
 		$stmt= $mysqli->prepare($adn);
 		$stmt->bind_param('i',$id);
         $stmt->execute();
         $stmt->close();	   
-        $msg ="Employee Details Removed";
+        $msg ="Equipment Details Removed";
 }
 ?>
 
@@ -36,13 +36,13 @@ if(isset($_GET['del']))
             <div class="col-12 col-lg-12">
               <div class="card card-table">
                 <div class="card-header">
-                  <div class="title">Manage Registration Desk Employees</div>
+                  <div class="title">Laboratory Equipments</div>
                 </div>
                 <?php if(isset($msg)) {?>
                     <script>
                                 setTimeout(function () 
                                 { 
-                                    swal("Success!","<?php echo $error;?>!","success");
+                                    swal("Success!","<?php echo $msg;?>!","success");
                                 },
                                     100);
                     </script>
@@ -52,17 +52,16 @@ if(isset($_GET['del']))
                   <table class="table table-striped table-borderless">
                     <thead>
                       <tr>
-                      <th style="width:20%;">#</th>
-                        <th style="width:20%;">Employee Name</th>
-                        <th style="width:20%;">Email Address</th>
-                        <th style="width:20%;">Mobile Number</th>
-                        <th style="width:20%;">National ID No.</th>
-                        <th>Action</th>
+                        <th>#</th>
+                        <th style="width:20%;">Equipent Name</th>
+                        <th style="width:20%;">Description</th>
+                        <th style="width:20%;">Status</th>
+                        <th style="width:20%;">Action</th>
                       </tr>
                     </thead>
                     <?php
                                             
-                        $ret="SELECT * FROM hospital_employees Where em_dept = 'Registration Desk' ";
+                        $ret="SELECT * FROM assets Where department = 'Laboratory' ";
                         $stmt= $mysqli->prepare($ret) ;
                         //$stmt->bind_param('i',$aid);
                         $stmt->execute() ;//ok
@@ -73,13 +72,12 @@ if(isset($_GET['del']))
                     	?>
                     <tbody class="no-border-x">
                       <tr>
-                      <td><?php echo $cnt;?></td>
-                        <td><?php echo $row->em_fname;?> <?php echo $row->em_lname;?></td>
-                        <td><?php echo $row->em_email;?></td>
-                        <td><?php echo $row->em_phone;?></td>
-                        <td><?php echo $row->em_idno;?></td>
-                        <td><a href='ohcms_admin_pages_manage_regdesk_employee.php?del=<?php echo $row->em_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
-                            <a href='ohcms_admin_pages_manage_single_regdesk_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-check-circle"></i></a>
+                        <td><?php echo $cnt;?></td>
+                        <td><?php echo $row->name;?></td>
+                        <td><?php echo $row->description;?></td>
+                        <td><?php echo $row->status;?></td>
+                        <td><a href='ohcms_admin_pages_manage_lab_equipments.php?del=<?php echo $row->id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
+                            <a href='ohcms_admin_pages_manage_singleequipment.php?id=<?php echo $row->id;?>'><i  class="mdi mdi-check-circle"></i></a>
                         </td> 
                       </tr>                     
                     </tbody>
