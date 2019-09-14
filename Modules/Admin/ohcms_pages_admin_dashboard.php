@@ -93,7 +93,7 @@ $aid=$_SESSION['admin_id'];
                           <div class="chart sparkline"><i class="large material-icons">add_shopping_cart</i></div>
                           <div class="data-info">
                             <div class="desc">Pharmaceuticals</div>
-                            <div class="value"><span class="indicator indicator-equal mdi mdi-chevron-right"></span><span class="number" data-toggle="counter" data-end="<?php echo $outpatients;?>"><?php echo $outpatients;?></span>
+                            <div class="value"><span class="indicator indicator-equal mdi mdi-chevron-right"></span><span class="number" data-toggle="counter" data-end="<?php echo $pharmaceuticals;?>"><?php echo $pharmaceuticals;?></span>
                             </div>
                           </div>
                         </div>
