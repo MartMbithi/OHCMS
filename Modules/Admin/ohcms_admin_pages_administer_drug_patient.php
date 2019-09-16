@@ -7,10 +7,15 @@ $aid=$_SESSION['admin_id'];
             if(isset($_POST['update_outpatient']))
         {
             $p_id=$_GET['p_id'];
-            $p_lab_tests=$_POST['p_lab_tests'];
+            $p_fname=$_POST['p_fname'];
+            $p_lname=$_POST['p_lname'];
+            $p_age=$_POST['p_age'];
+            $p_ailment=$_POST['p_ailment'];
+            $p_address=($_POST['p_address']);
             $p_diagonisis=$_POST['p_diagonisis'];
-            $p_lab_results=$_POST['p_lab_results'];
+            $p_prescription=$_POST['p_prescription'];
             //$p_type=$_POST['p_type'];
+            $p_drug_admin=$_POST['p_drug_admin'];
             //$created_at=$_POST['created_at'];
         //$=$_POST['location'];
         //$website=$_POST['website'];
@@ -22,13 +27,13 @@ $aid=$_SESSION['admin_id'];
        // move_uploaded_file($_FILES["cover"]["tmp_name"],"assets/img/cover/".$_FILES["cover"]["name"]);
         
     //sql to inset the values to the database
-        $query="update patients set p_lab_tests=?, p_lab_results=?, p_diagonisis=? where p_id=?";
+        $query="update patients set p_fname=?, p_lname=?, p_age=?, p_ailment=?, p_address=?, p_diagonisis=?, p_prescription=?, p_drug_admin=? where p_id=?";
         $stmt = $mysqli->prepare($query);
         //bind the submitted values with the matching columns in the database.
-        $rc=$stmt->bind_param('sssi', $p_lab_tests, $p_lab_tests, $p_diagonisis, $p_id);
+        $rc=$stmt->bind_param('ssssssssi', $p_fname, $p_lname, $p_age, $p_ailment, $p_address, $p_diagonisis, $p_prescription, $p_drug_admin, $p_id);
         $stmt->execute();
         //if binding is successful, then indicate that a new value has been added.
-        $msg = "Patient Laboratory Record Updated!";
+        $msg = "Patient Details Updated!";
   
     }
 ?>
@@ -51,7 +56,7 @@ $aid=$_SESSION['admin_id'];
         <div class="row">
             <div class="col-md-12">
               <div class="card card-border-color card-border-color-primary">
-                <div class="card-header card-header-divider">Laboratory Patient Details<span class="card-subtitle">Please fill required details.</span></div>
+                <div class="card-header card-header-divider">Update OutPatient Details<span class="card-subtitle">Please fill required details.</span></div>
                 <div class="card-body">
                 <?php if(isset($msg)) 
                  {?>
@@ -81,35 +86,63 @@ $aid=$_SESSION['admin_id'];
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">First Name</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value ="<?php echo $row->p_fname;?>" name="p_fname" type="text">
+                        <input class="form-control" id="inputText3" readonly value ="<?php echo $row->p_fname;?>" name="p_fname" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Last Name</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->p_lname;?>" name="p_lname" type="text">
+                        <input class="form-control" id="inputText3" readonly value="<?php echo $row->p_lname;?>" name="p_lname" type="text">
                       </div>
                     </div>
-                    
+                    <div class="form-group row">
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Age</label>
+                      <div class="col-12 col-sm-8 col-lg-6">
+                        <input class="form-control" id="inputText3" readonly value="<?php echo $row->p_age;?>" name="p_age" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Address</label>
+                      <div class="col-12 col-sm-8 col-lg-6">
+                        <input class="form-control" id="inputText3" readonly value="<?php echo $row->p_address;?>" name="p_address" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Lab Tests</label>
+                      <div class="col-12 col-sm-8 col-lg-6">
+                        <textarea class="form-control" id="inputText3" readonly value=""  type="text"><?php echo $row->p_lab_tests;?></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Lab Results</label>
+                      <div class="col-12 col-sm-8 col-lg-6">
+                        <textarea class="form-control" id="inputText3" readonly value=""  type="text"><?php echo $row->p_lab_results;?></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Ailment</label>
+                      <div class="col-12 col-sm-8 col-lg-6">
+                        <input class="form-control" id="inputText3" readonlyu value="<?php echo $row->p_ailment;?>" name="p_ailment" type="text">
+                      </div>
+                    </div>
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Diagonisis</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3"  name="p_diagonisis" type="text"><?php echo $row->p_diagonisis;?></textarea>
+                        <textarea class="form-control" id="inputText3" readonly  name="p_diagonisis" type="text"><?php echo $row->p_diagonisis;?></textarea>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Laboratory Tests</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Prescription</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3" value="" name="p_lab_tests" type="text"></textarea>
+                        <textarea class="form-control" id="inputText3" value="" name="p_prescription" type="text"><?php echo $row->p_prescription;?></textarea>
                       </div>
-                    </div>
+                    </div> 
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Laboratory Results</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Drug Administration</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3" value="" name="p_lab_results" type="text"></textarea>
+                        <textarea class="form-control" id="inputText3" value="" name="p_drug_admin" type="text"></textarea>
                       </div>
-                    </div>
-                    
+                    </div>                    
                     <div class="col-sm-6">
                         <p class="text-right">
                           <button class="btn btn-space btn-primary" name="update_outpatient" type="submit">Save</button>

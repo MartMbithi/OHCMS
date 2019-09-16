@@ -21,7 +21,7 @@ $aid=$_SESSION['admin_id'];
         <div class="row">
             <div class="col-sm-12">
               <div class="card card-table">
-                <div class="card-header">Advanced Search Patients Records
+                <div class="card-header">Advanced Patients Prescription Records.
                   <div class="tools dropdown">
                     <div class="dropdown-menu" role="menu">
                       <div class="dropdown-divider"></div>
@@ -36,6 +36,7 @@ $aid=$_SESSION['admin_id'];
                         <th>Name</th>
                         <th>Age</th>
                         <th>Address</th>
+                        <th>Drug type</th>
                         <th>Registration Date</th>
                         <th>Action</th>
                       </tr>
@@ -57,9 +58,11 @@ $aid=$_SESSION['admin_id'];
                         <td><?php echo $row->p_fname;?> <?php echo $row->p_lname;?></td>
                         <td><?php echo $row->p_age;?></td>
                         <td><?php echo $row->p_address;?></td>
+                        <td><?php echo $row->p_drug_admin;?></td>
                         <td class="center"><?php echo $row->created_at;?></td>
                         <td>
-                            <a href='ohcms_admin_pages_view_out_patient_details.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
+                        <a href='ohcms_admin_pages_view_administer_drug_patient.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
+                        <a href='ohcms_admin_pages_administer_drug_patient.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-check-circle"></i></a>
                         </td> 
                       </tr>
                     </tbody>

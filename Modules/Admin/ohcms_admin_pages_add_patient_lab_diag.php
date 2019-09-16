@@ -36,7 +36,7 @@ if(isset($_GET['del']))
             <div class="col-12 col-lg-12">
               <div class="card card-table">
                 <div class="card-header">
-                  <div class="title">OutPatients</div>
+                  <div class="title">Patient Records</div>
                 </div>
                 <?php if(isset($msg)) {?>
                     <script>
@@ -62,7 +62,7 @@ if(isset($_GET['del']))
                     </thead>
                     <?php
                                             
-                        $ret="SELECT * FROM patients Where p_type = 'OutPatient' ";
+                        $ret="SELECT * FROM patients";
                         $stmt= $mysqli->prepare($ret) ;
                         //$stmt->bind_param('i',$aid);
                         $stmt->execute() ;//ok
@@ -90,7 +90,7 @@ if(isset($_GET['del']))
             <div class="col-12 col-lg-12">
               <div class="card card-table">
                 <div class="card-header">
-                  <div class="title">OutPatients  Laboratory Tests</div>
+                  <div class="title">Patient Laboratory Tests</div>
                 </div>
                 <?php if(isset($msg)) {?>
                     <script>
@@ -117,7 +117,7 @@ if(isset($_GET['del']))
                     </thead>
                     <?php
                                             
-                        $ret="SELECT * FROM patients Where p_type = 'OutPatient' ";
+                        $ret="SELECT * FROM patients";
                         $stmt= $mysqli->prepare($ret) ;
                         //$stmt->bind_param('i',$aid);
                         $stmt->execute() ;//ok

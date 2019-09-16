@@ -64,8 +64,9 @@
                       <li><a href="ohcms_admin_pages_add_pharmaceutical_category.php">Add Pharmaceutical Category</a></li>
                       <li><a href="ohcms_admin_pages_add_pharmaceutical.php">Add Pharmaceutical</a></li>
                       <li><a href="ohcms_admin_pages_manage_pharmaceutical.php">Manage Pharmaceuticals</a></li>
-                      <li><a href="ohcms_admin_pages_advance_search_pharmaceutical.php"><span class="badge badge-success float-right">New</span>Advance Search </a>
-                      <li><a href="ohcms_admin_pages_view_patients_prescriptions.php"><span class="badge badge-success float-right">New</span>Prescription</a></li>
+                      <li><a href="ohcms_admin_pages_advance_search_pharmaceutical.php">Advance Search </a>
+                      <li><a href="ohcms_admin_pages_view_inpatients_prescriptions.php">Inpatient Drugs</a></li>
+                      <li><a href="ohcms_admin_pages_view_outpatients_prescriptions.php">OutPatient Drugs</a></li>
                     </ul>
                   </li>
                   <li class="parent active"><a href="#"><i class="icon mdi mdi-biohazard"></i><span>Isolation Ward</span></a>
