@@ -4,9 +4,9 @@ include('assets/configs/config.php');
 include('assets/configs/checklogin.php');
 check_login();
 $aid=$_SESSION['admin_id'];
-            if(isset($_POST['update_employee']))
+            if(isset($_POST['add_employee']))
         {
-        $em_id=$_GET['em_id'];
+        
         $em_fname=$_POST['em_fname'];
         $em_lname=$_POST['em_lname'];
         $em_idno=$_POST['em_idno'];
@@ -24,13 +24,13 @@ $aid=$_SESSION['admin_id'];
        // move_uploaded_file($_FILES["cover"]["tmp_name"],"assets/img/cover/".$_FILES["cover"]["name"]);
         
     //sql to inset the values to the database
-        $query="update hospital_employees set em_fname=?, em_lname=?, em_idno=?, em_email=?, em_address=?, em_phone=?, em_dept=? where em_id=?";
+        $query="insert into hospital_employees  (em_fname, em_lname, em_idno, em_email, em_address, em_phone, em_dept) values(?,?,?,?,?,?,?)";
         $stmt = $mysqli->prepare($query);
         //bind the submitted values with the matching columns in the database.
-        $rc=$stmt->bind_param('sssssssi', $em_fname, $em_lname, $em_idno, $em_email, $em_address, $em_phone, $em_dept, $em_id);
+        $rc=$stmt->bind_param('sssssss', $em_fname, $em_lname, $em_idno, $em_email, $em_address, $em_phone, $em_dept);
         $stmt->execute();
         //if binding is successful, then indicate that a new value has been added.
-        $msg = "Employee Details Updated!";
+        $msg = "Consultation Employee Added!";
   
     }
 ?>
@@ -53,7 +53,7 @@ $aid=$_SESSION['admin_id'];
         <div class="row">
             <div class="col-md-12">
               <div class="card card-border-color card-border-color-primary">
-                <div class="card-header card-header-divider">Update Employee Record<span class="card-subtitle">Please fill required details.</span></div>
+                <div class="card-header card-header-divider">Add Consultation Employee<span class="card-subtitle">Please fill required details.</span></div>
                 <div class="card-body">
                 <?php if(isset($msg)) 
                  {?>
@@ -67,70 +67,57 @@ $aid=$_SESSION['admin_id'];
                     <!--Trigger a pretty success alert-->
 
                  <?php } ?>
-                <?php	
-                    $em_id=$_GET['em_id'];
-                    $ret="select * from hospital_employees where em_id=?";
-                    //code for getting rooms using a certain id
-                    $stmt= $mysqli->prepare($ret) ;
-                    $stmt->bind_param('i',$em_id);
-                    $stmt->execute() ;//ok
-                    $res=$stmt->get_result();
-                    //$cnt=1;
-                    while($row=$res->fetch_object())
-                    {
-                ?>
                   <form method="POST" >
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee First Name</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->em_fname;?>" name="em_fname" type="text">
+                        <input class="form-control" id="inputText3" name="em_fname" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Last Name</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->em_lname;?>" name="em_lname" type="text">
+                        <input class="form-control" id="inputText3" name="em_lname" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee National ID Number</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->em_idno;?>" name="em_idno" type="text">
+                        <input class="form-control" id="inputText3" name="em_idno" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Email Adddress</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->em_email;?>" name="em_email" type="email">
+                        <input class="form-control" id="inputText3" name="em_email" type="email">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Address</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->em_address;?>" name="em_address" type="text">
+                        <input class="form-control" id="inputText3" name="em_address" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Mobile Phone Number</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->em_phone;?>" name="em_phone" type="text">
+                        <input class="form-control" id="inputText3" name="em_phone" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Department</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->em_dept;?>" name="em_dept" type="text">
+                        <input class="form-control" id="inputText3" readonly value="Consultation" name="em_dept" type="text">
                       </div>
                     </div>
                     <div class="col-sm-6">
                         <p class="text-right">
-                          <button class="btn btn-space btn-primary" name="update_employee" type="submit">Upadate Employee</button>
+                          <button class="btn btn-space btn-primary" name="add_employee" type="submit">Register Employee</button>
                           <button class="btn btn-space btn-secondary">Cancel</button>
                         </p>
                       </div>
                     </div>
                   </form>
-                    <?php }?>
                 </div>
               </div>
             </div>

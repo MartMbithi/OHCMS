@@ -44,7 +44,7 @@ $aid=$_SESSION['admin_id'];
             <div class="col-12 col-lg-6 col-xl-3">
             <?php
                                 //code for getting all inpatients ever admitted the hospital
-                                $result ="SELECT count(*) FROM patients where p_type='InPatient'";
+                                $result ="SELECT count(*) FROM patients where p_type='InPatient' ||  p_type='Isolation Patient' ";
                                 $stmt = $mysqli->prepare($result);
                                 $stmt->execute();
                                 $stmt->bind_result($inpatients);
@@ -246,7 +246,7 @@ $aid=$_SESSION['admin_id'];
                                 { y:
                                   <?php
                                                 //code for getting all inpatients 
-                                                $result ="SELECT count(*)  FROM patients where p_type = 'InPatient'  ";
+                                                $result ="SELECT count(*)  FROM patients where p_type = 'InPatient' || p_type='Isolation Patient' ";
                                                 $stmt = $mysqli->prepare($result);
                                                 $stmt->execute();
                                                 $stmt->bind_result($in);

@@ -53,7 +53,7 @@ $aid=$_SESSION['admin_id'];
         <div class="row">
             <div class="col-md-12">
               <div class="card card-border-color card-border-color-primary">
-                <div class="card-header card-header-divider">Add Registration Desk Employee<span class="card-subtitle">Please fill required details.</span></div>
+                <div class="card-header card-header-divider">Add Employee<span class="card-subtitle">Please fill required details.</span></div>
                 <div class="card-body">
                 <?php if(isset($msg)) 
                  {?>

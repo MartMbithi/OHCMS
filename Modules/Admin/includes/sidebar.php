@@ -75,7 +75,7 @@
                       <li><a href="ohcms_admin_pages_manage_iward_employee.php">Manage Employee</a></li>
                       <li><a href="ohcms_admin_pages_add_iward.php">Add Isolation Ward</a></li>
                       <li><a href="ohcms_admin_pages_manage_iward.php">Manage Isolation Wards</a></li>
-                      <li><a href="ohcms_admin_pages_view_iward_patients.php">View Patients</a></li>
+                      <li><a href="ohcms_admin_pages_admit_iward_patients.php">Admit Patient</a></li>
                       <li><a href="ohcms_admin_pages_manage_iward_patients.php">Manage Patients</a></li>
                     </ul>
                   </li>
