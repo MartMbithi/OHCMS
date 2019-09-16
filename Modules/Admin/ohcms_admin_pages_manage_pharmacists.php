@@ -7,7 +7,7 @@ $aid=$_SESSION['admin_id'];
 if(isset($_GET['del']))
 {
 	$id=intval($_GET['del']);
-	$adn="delete from hospital_employees where em_id=?";
+	$adn="delete from hospital_employees where id=?";
 		$stmt= $mysqli->prepare($adn);
 		$stmt->bind_param('i',$id);
         $stmt->execute();
@@ -36,18 +36,8 @@ if(isset($_GET['del']))
             <div class="col-12 col-lg-12">
               <div class="card card-table">
                 <div class="card-header">
-                  <div class="title">Manage Registration Desk Employees</div>
+                  <div class="title">Manage Lab Employees</div>
                 </div>
-                <?php if(isset($msg)) {?>
-                    <script>
-                                setTimeout(function () 
-                                { 
-                                    swal("Success!","<?php echo $error;?>!","success");
-                                },
-                                    100);
-                    </script>
-                  
-                  <?php } ?>
                 <div class="card-body table-responsive">
                   <table class="table table-striped table-borderless">
                     <thead>
@@ -62,7 +52,7 @@ if(isset($_GET['del']))
                     </thead>
                     <?php
                                             
-                        $ret="SELECT * FROM hospital_employees Where em_dept = 'Registration Desk' ";
+                        $ret="SELECT * FROM hospital_employees Where em_dept = 'Pharmacy' ";
                         $stmt= $mysqli->prepare($ret) ;
                         //$stmt->bind_param('i',$aid);
                         $stmt->execute() ;//ok
@@ -78,9 +68,10 @@ if(isset($_GET['del']))
                         <td><?php echo $row->em_email;?></td>
                         <td><?php echo $row->em_phone;?></td>
                         <td><?php echo $row->em_idno;?></td>
-                        <td><a href='ohcms_admin_pages_manage_regdesk_employee.php?del=<?php echo $row->em_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
-                            <a href='ohcms_admin_pages_manage_single_regdesk_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-check-circle"></i></a>                         
-                            <a href='ohcms_admin_pages_view_single_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a></td>
+                        <td><a href='ohcms_admin_pages_manage_pharmacist.php?del=<?php echo $row->em_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
+                            <a href='ohcms_admin_pages_manage_single_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-check-circle"></i></a>
+                            <a href='ohcms_admin_pages_view_single_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
+                        </td> 
                       </tr>                     
                     </tbody>
                     <?php $cnt= $cnt+1; }?>

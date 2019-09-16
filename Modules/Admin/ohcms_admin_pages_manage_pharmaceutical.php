@@ -7,12 +7,12 @@ $aid=$_SESSION['admin_id'];
 if(isset($_GET['del']))
 {
 	$id=intval($_GET['del']);
-	$adn="delete from hospital_employees where em_id=?";
+	$adn="delete from  pharmaceuticals where pharm_id=?";
 		$stmt= $mysqli->prepare($adn);
 		$stmt->bind_param('i',$id);
         $stmt->execute();
         $stmt->close();	   
-        $msg ="Employee Details Removed";
+        $msg ="Pharmaceutical Details Removed";
 }
 ?>
 
@@ -36,13 +36,13 @@ if(isset($_GET['del']))
             <div class="col-12 col-lg-12">
               <div class="card card-table">
                 <div class="card-header">
-                  <div class="title">Manage Registration Desk Employees</div>
+                  <div class="title">Pharmaceutical Records</div>
                 </div>
                 <?php if(isset($msg)) {?>
                     <script>
                                 setTimeout(function () 
                                 { 
-                                    swal("Success!","<?php echo $error;?>!","success");
+                                    swal("Success!","<?php echo $msg;?>!","success");
                                 },
                                     100);
                     </script>
@@ -52,17 +52,19 @@ if(isset($_GET['del']))
                   <table class="table table-striped table-borderless">
                     <thead>
                       <tr>
-                      <th>#</th>
-                        <th style="width:20%;">Employee Name</th>
-                        <th style="width:20%;">Email Address</th>
-                        <th style="width:20%;">Mobile Number</th>
-                        <th style="width:20%;">National ID No.</th>
-                        <th>Action</th>
+                        <th>#</th>
+                        <th style="width:20%;">Name</th>
+                        <th style="width:20%;">Category</th>
+                        <th style="width:20%;">Vendor</th>
+                        <th style="width:20%;">Qty</th>
+                        <th style="width:20%;">Purchase Date</th>
+                        <th style="width:20%;">Expiry date</th>
+                        <th style="width:20%;">Action</th>
                       </tr>
                     </thead>
                     <?php
                                             
-                        $ret="SELECT * FROM hospital_employees Where em_dept = 'Registration Desk' ";
+                        $ret="SELECT * FROM pharmaceuticals";
                         $stmt= $mysqli->prepare($ret) ;
                         //$stmt->bind_param('i',$aid);
                         $stmt->execute() ;//ok
@@ -73,14 +75,17 @@ if(isset($_GET['del']))
                     	?>
                     <tbody class="no-border-x">
                       <tr>
-                      <td><?php echo $cnt;?></td>
-                        <td><?php echo $row->em_fname;?> <?php echo $row->em_lname;?></td>
-                        <td><?php echo $row->em_email;?></td>
-                        <td><?php echo $row->em_phone;?></td>
-                        <td><?php echo $row->em_idno;?></td>
-                        <td><a href='ohcms_admin_pages_manage_regdesk_employee.php?del=<?php echo $row->em_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
-                            <a href='ohcms_admin_pages_manage_single_regdesk_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-check-circle"></i></a>                         
-                            <a href='ohcms_admin_pages_view_single_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a></td>
+                        <td><?php echo $cnt;?></td>
+                        <td><?php echo $row->pharm_name;?></td>
+                        <td><?php echo $row->pharm_cat;?></td>
+                        <td><?php echo $row->pharm_vendor;?></td>
+                        <td><?php echo $row->pharm_qty;?></td>
+                        <td><?php echo $row->pharm_pur_date;?></td>
+                        <td><?php echo $row->pharm_exp_date;?></td>
+                        <td><a href='ohcms_admin_pages_manage_pharmaceutical.php?del=<?php echo $row->pharm_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
+                            <a href='ohcms_admin_pages_manage_singlepharmaceutical.php?pharm_id=<?php echo $row->pharm_id;?>'><i  class="mdi mdi-check-circle"></i></a>
+                            <a href='ohcms_admin_pages_view_single_pharmaceutical.php?pharm_id=<?php echo $row->pharm_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
+                        </td> 
                       </tr>                     
                     </tbody>
                     <?php $cnt= $cnt+1; }?>

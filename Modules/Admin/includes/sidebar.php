@@ -60,7 +60,7 @@
                   <li class="parent active"><a href="#"><i class="icon mdi mdi-pharmacy"></i><span>Pharmacy</span></a>
                     <ul class="sub-menu">
                       <li><a href="ohcms_admin_pages_add_pharmacist.php">Add Pharmacist</a></li>
-                      <li><a href="ohcms_admin_pages_add_pharmacists.php">Manage Pharmacists</a></li>
+                      <li><a href="ohcms_admin_pages_manage_pharmacists.php">Manage Pharmacists</a></li>
                       <li><a href="ohcms_admin_pages_add_pharmaceutical_category.php">Add Pharmaceutical Category</a></li>
                       <li><a href="ohcms_admin_pages_add_pharmaceutical.php">Add Pharmaceutical</a></li>
                       <li><a href="ohcms_admin_pages_manage_pharmaceutical.php">Manage Pharmaceuticals</a></li>
