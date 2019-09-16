@@ -4,33 +4,26 @@ include('assets/configs/config.php');
 include('assets/configs/checklogin.php');
 check_login();
 $aid=$_SESSION['admin_id'];
-            if(isset($_POST['update_employee']))
+            if(isset($_POST['add_ward_record']))
         {
-        $em_id=$_GET['em_id'];
-        $em_fname=$_POST['em_fname'];
-        $em_lname=$_POST['em_lname'];
-        $em_idno=$_POST['em_idno'];
-        $em_email=$_POST['em_email'];
-        $em_address=($_POST['em_address']);
-        $em_phone=$_POST['em_phone'];
-        $em_dept=$_POST['em_dept'];
-        //$=$_POST['location'];
-        //$website=$_POST['website'];
-        //$bio=$_POST['bio'];
-        //$skill=$_POST['skill'];
+        
+        $ward_name=$_POST['ward_name'];
+        $ward_desc=$_POST['ward_desc'];
+        $bed_number=$_POST['bed_number'];
+        $ward_type=$_POST['ward_type'];
         //$dpic=$_FILES["dpic"]["name"];
         //move_uploaded_file($_FILES["dpic"]["tmp_name"],"assets/img/".$_FILES["dpic"]["name"]);
         //$cover=$_FILES["cover"]["name"];
        // move_uploaded_file($_FILES["cover"]["tmp_name"],"assets/img/cover/".$_FILES["cover"]["name"]);
         
     //sql to inset the values to the database
-        $query="update hospital_employees set em_fname=?, em_lname=?, em_idno=?, em_email=?, em_address=?, em_phone=?, em_dept=? where em_id=?";
+        $query="insert into wards  (ward_name, ward_desc, bed_number, ward_type) values(?,?,?,?)";
         $stmt = $mysqli->prepare($query);
         //bind the submitted values with the matching columns in the database.
-        $rc=$stmt->bind_param('sssssssi', $em_fname, $em_lname, $em_idno, $em_email, $em_address, $em_phone, $em_dept, $em_id);
+        $rc=$stmt->bind_param('ssss', $ward_name, $ward_desc, $bed_number, $ward_type);
         $stmt->execute();
         //if binding is successful, then indicate that a new value has been added.
-        $msg = "Employee Details Updated!";
+        $msg = "Ward Details Added";
   
     }
 ?>
@@ -53,7 +46,7 @@ $aid=$_SESSION['admin_id'];
         <div class="row">
             <div class="col-md-12">
               <div class="card card-border-color card-border-color-primary">
-                <div class="card-header card-header-divider">Update Employee Record<span class="card-subtitle">Please fill required details.</span></div>
+                <div class="card-header card-header-divider">Add Ward Details<span class="card-subtitle">Please fill required details.</span></div>
                 <div class="card-body">
                 <?php if(isset($msg)) 
                  {?>
@@ -67,70 +60,39 @@ $aid=$_SESSION['admin_id'];
                     <!--Trigger a pretty success alert-->
 
                  <?php } ?>
-                <?php	
-                    $em_id=$_GET['em_id'];
-                    $ret="select * from hospital_employees where em_id=?";
-                    //code for getting rooms using a certain id
-                    $stmt= $mysqli->prepare($ret) ;
-                    $stmt->bind_param('i',$em_id);
-                    $stmt->execute() ;//ok
-                    $res=$stmt->get_result();
-                    //$cnt=1;
-                    while($row=$res->fetch_object())
-                    {
-                ?>
                   <form method="POST" >
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee First Name</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Ward Name</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->em_fname;?>" name="em_fname" type="text">
+                        <input class="form-control" id="inputText3" value = "Isolation Ward" name="ward_name" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Last Name</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Ward Description</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->em_lname;?>" name="em_lname" type="text">
+                        <textarea class="form-control" id="inputText3" name="ward_desc" type="text"></textarea>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee National ID Number</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Number Of Beds</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->em_idno;?>" name="em_idno" type="text">
+                        <input class="form-control" id="inputText3" name="bed_number"  type="text">
                       </div>
-                    </div>
+                    </div> 
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Email Adddress</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Ward Type</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->em_email;?>" name="em_email" type="email">
+                        <input class="form-control" id="inputText3" name="ward_type"  type="text">
                       </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Address</label>
-                      <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->em_address;?>" name="em_address" type="text">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Mobile Phone Number</label>
-                      <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->em_phone;?>" name="em_phone" type="text">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Department</label>
-                      <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->em_dept;?>" name="em_dept" type="text">
-                      </div>
-                    </div>
+                    </div>                     
                     <div class="col-sm-6">
                         <p class="text-right">
-                          <button class="btn btn-space btn-primary" name="update_employee" type="submit">Upadate Employee</button>
+                          <button class="btn btn-space btn-primary" name="add_ward_record" type="submit">Save</button>
                           <button class="btn btn-space btn-secondary">Cancel</button>
                         </p>
                       </div>
                     </div>
                   </form>
-                    <?php }?>
                 </div>
               </div>
             </div>

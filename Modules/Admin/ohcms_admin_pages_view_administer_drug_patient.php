@@ -71,23 +71,23 @@ if(isset($_GET['del']))
                 <div class="row">
                   <div class="col-lg-12">
                   <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Lab Tests</th>
-      <th scope="col">Lab Results</th>
-      <th scope="col">Diagonisis</th> 	
-      <th scope="col">Drug Prescribed</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><?php echo $row->p_lab_tests;?></td>
-      <td><?php echo $row->p_lab_results;?></td>
-      <td><?php echo $row->p_diagonisis;?></td>
-      <td><?php echo $row->p_drug_admin;?></td>
-    </tr>
-  </tbody>
-</table>
+                      <thead>
+                        <tr>
+                          <th scope="col">Lab Tests</th>
+                          <th scope="col">Lab Results</th>
+                          <th scope="col">Diagonisis</th> 	
+                          <th scope="col">Drug Prescribed</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><?php echo $row->p_lab_tests;?></td>
+                          <td><?php echo $row->p_lab_results;?></td>
+                          <td><?php echo $row->p_diagonisis;?></td>
+                          <td><?php echo $row->p_drug_admin;?></td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>

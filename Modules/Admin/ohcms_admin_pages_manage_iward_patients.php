@@ -4,6 +4,16 @@ include('assets/configs/config.php');
 include('assets/configs/checklogin.php');
 check_login();
 $aid=$_SESSION['admin_id'];
+if(isset($_GET['del']))
+{
+	$id=intval($_GET['del']);
+	$adn="delete from patients where p_id=?";
+		$stmt= $mysqli->prepare($adn);
+		$stmt->bind_param('i',$id);
+        $stmt->execute();
+        $stmt->close();	   
+        $msg ="Patient`s Details Removed";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +31,7 @@ $aid=$_SESSION['admin_id'];
         <div class="row">
             <div class="col-sm-12">
               <div class="card card-table">
-                <div class="card-header">Advanced Patients Prescription Records.
+                <div class="card-header">Manage Isolation Ward Patients Records
                   <div class="tools dropdown">
                     <div class="dropdown-menu" role="menu">
                       <div class="dropdown-divider"></div>
@@ -36,14 +46,13 @@ $aid=$_SESSION['admin_id'];
                         <th>Name</th>
                         <th>Age</th>
                         <th>Address</th>
-                        <th>Drug type</th>
                         <th>Registration Date</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <?php
                         
-                        $ret="SELECT * FROM patients Where p_type = 'InPatient' || p_type='Isolation Patient' ";
+                        $ret="SELECT * FROM patients Where p_type = 'Isolation Patient' ";
                         $stmt= $mysqli->prepare($ret) ;
                         //$stmt->bind_param('i',$aid);
                         $stmt->execute() ;//ok
@@ -58,11 +67,11 @@ $aid=$_SESSION['admin_id'];
                         <td><?php echo $row->p_fname;?> <?php echo $row->p_lname;?></td>
                         <td><?php echo $row->p_age;?></td>
                         <td><?php echo $row->p_address;?></td>
-                        <td><?php echo $row->p_drug_admin;?></td>
                         <td class="center"><?php echo $row->created_at;?></td>
                         <td>
-                        <a href='ohcms_admin_pages_view_administer_drug_patient.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
-                        <a href='ohcms_admin_pages_administer_drug_patient.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-check-circle"></i></a>
+                            <a href='ohcms_admin_pages_manage_iward_patients.php?del=<?php echo $row->p_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
+                            <a href='ohcms_admin_pages_update_iward_patients.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-check-circle"></i></a>
+                            <a href='ohcms_admin_pages_view_out_patient_details.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
                         </td> 
                       </tr>
                     </tbody>

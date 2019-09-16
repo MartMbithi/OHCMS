@@ -33,7 +33,7 @@ $aid=$_SESSION['admin_id'];
                     {
                 ?>
       <div class="be-content">
-        <div id="printDetails" class="main-content container-fluid">
+        <div class="main-content container-fluid">
           <div class="row">
             <script>
                 function printContent(el){
@@ -45,7 +45,7 @@ $aid=$_SESSION['admin_id'];
                 }
              </script>
             <div class="col-12 col-lg-12">
-              <div class="invoice">
+              <div id="printDetails" class="invoice">
               
                 <div class="row invoice-header">
                   <div class="col-sm-7">
@@ -58,12 +58,12 @@ $aid=$_SESSION['admin_id'];
                   <div class="col-sm-2 invoice-payment-direction"></i></div>
                   <div class="col-sm-5 invoice-person">Department: <span class="name"><?php echo $row->em_dept;?></span>Email :<span><?php echo $row->em_email;?></span><span></span><span></span><span></span></div>
                 </div>
-                <div class="row invoice-footer">
+              </div>
+              <div class="row invoice-footer">
                   <div class="col-lg-12">
                     <button id="print" onclick="printContent('printDetails');" class="btn btn-lg btn-space btn-success">Print</button>
                   </div>
                 </div>
-              </div>
             </div>
           </div>          
         </div>
