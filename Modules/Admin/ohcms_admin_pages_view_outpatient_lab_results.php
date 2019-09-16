@@ -43,7 +43,7 @@ if(isset($_GET['del']))
                     {
                 ?>
       <div class="be-content">
-        <div id="printDetails" class="main-content container-fluid">
+        <div  class="main-content container-fluid">
           <div class="row">
             <script>
                 function printContent(el){
@@ -55,7 +55,7 @@ if(isset($_GET['del']))
                 }
              </script>
             <div class="col-12 col-lg-12">
-              <div class="invoice">
+              <div id="printDetails" class="invoice">
               
                 <div class="row invoice-header">
                   <div class="col-sm-7">
@@ -82,13 +82,12 @@ if(isset($_GET['del']))
                     </table>
                   </div>
                 </div>
-
-                <div class="row invoice-footer">
+              </div>
+              <div class="row invoice-footer">
                   <div class="col-lg-12">
                     <button id="print" onclick="printContent('printDetails');" class="btn btn-lg btn-space btn-success">Print</button>
                   </div>
                 </div>
-              </div>
             </div>
           </div>          
         </div>

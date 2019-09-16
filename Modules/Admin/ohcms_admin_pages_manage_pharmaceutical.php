@@ -54,9 +54,9 @@ if(isset($_GET['del']))
                       <tr>
                         <th>#</th>
                         <th style="width:20%;">Name</th>
-                        <th style="width:20%;">Category</th>
+                        <th>Category</th>
                         <th style="width:20%;">Vendor</th>
-                        <th style="width:20%;">Qty</th>
+                        <th>Qty</th>
                         <th style="width:20%;">Purchase Date</th>
                         <th style="width:20%;">Expiry date</th>
                         <th style="width:20%;">Action</th>

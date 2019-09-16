@@ -21,7 +21,7 @@ $aid=$_SESSION['admin_id'];
         <div class="row">
             <div class="col-sm-12">
               <div class="card card-table">
-                <div class="card-header">Advanced Search Patients Records
+                <div class="card-header">Advanced Search Pharmaceuticals
                   <div class="tools dropdown">
                     <div class="dropdown-menu" role="menu">
                       <div class="dropdown-divider"></div>
@@ -30,19 +30,21 @@ $aid=$_SESSION['admin_id'];
                 </div>
                 <div class="card-body">
                   <table class="table table-striped table-hover table-fw-widget" id="table1">
-                    <thead>
+                  <thead>
                       <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>Age</th>
-                        <th>Address</th>
-                        <th>Registration Date</th>
+                        <th>Category</th>
+                        <th>Vendor</th>
+                        <th>Qty</th>
+                        <th>Purchase Date</th>
+                        <th>Expiry date</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <?php
-                        
-                        $ret="SELECT * FROM patients Where p_type = 'InPatient' ";
+                                            
+                        $ret="SELECT * FROM pharmaceuticals";
                         $stmt= $mysqli->prepare($ret) ;
                         //$stmt->bind_param('i',$aid);
                         $stmt->execute() ;//ok
@@ -50,20 +52,20 @@ $aid=$_SESSION['admin_id'];
                         $cnt=1;
                         while($row=$res->fetch_object())
                           {
-                    ?>
-                    <tbody>
+                    	?>
+                    <tbody class="no-border-x">
                       <tr>
                         <td><?php echo $cnt;?></td>
-                        <td><?php echo $row->p_fname;?> <?php echo $row->p_lname;?></td>
-                        <td><?php echo $row->p_age;?></td>
-                        <td><?php echo $row->p_address;?></td>
-                        <td class="center"><?php echo $row->created_at;?></td>
-                        <td>
-                            <a href='ohcms_admin_pages_view_out_patient_details.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
-                        </td> 
-                      </tr>
+                        <td><?php echo $row->pharm_name;?></td>
+                        <td><?php echo $row->pharm_cat;?></td>
+                        <td><?php echo $row->pharm_vendor;?></td>
+                        <td><?php echo $row->pharm_qty;?></td>
+                        <td><?php echo $row->pharm_pur_date;?></td>
+                        <td><?php echo $row->pharm_exp_date;?></td>
+                           <td> <a href='ohcms_admin_pages_view_single_pharmaceutical.php?pharm_id=<?php echo $row->pharm_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a></td> 
+                      </tr>                     
                     </tbody>
-                  <?php $cnt=$cnt+1; }?>
+                    <?php $cnt= $cnt+1; }?>
 
                   </table>
                 </div>
