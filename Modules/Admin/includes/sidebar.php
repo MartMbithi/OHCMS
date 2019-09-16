@@ -100,12 +100,14 @@
                       <li><a href="ohcms_admin_pages_department_manage.php">Manage</a></li>                  
                     </ul>
                   </li>
+                  <!--
                   <li class="parent active"><a href="#"><i class="icon mdi mdi-cogs"></i><span>Admin Settings</span></a>
                     <ul class="sub-menu">
                       <li><a href="ohcms_admin_pages_module_settings.php">Module Settings</a></li>
                       <li><a href="ohcms_admin_pages_module_advance_settings.php">Advanced Settings</a></li>                  
                     </ul>
                   </li>
+                  -->
                 </ul>
               </div>
             </div>

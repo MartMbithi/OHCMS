@@ -100,39 +100,74 @@ $aid=$_SESSION['admin_id'];
             </div>
           </div>
           <div class="row">
-            <div class="col-12 col-lg-12">
-              <div class="card card-table">
-                <div class="card-header">
-                  <div class="title">Senior Departmental Employees</div>
+          <div class="col-12 col-lg-12">
+              <div class="widget be-loading">
+                
+                <div class="widget-chart-container">
+                  <div id="chartContainer" style="height: 295px; width: 100%;"></div>
+                  
+                  <!--Wackass Javascript But It Aint Shit-->
+                    <script>
+                          window.onload = function () {
+
+                          var chart = new CanvasJS.Chart("chartContainer", {
+                            exportEnabled: true,
+                            animationEnabled: true,
+                            title:{
+                              text: "Patient Numbers By Categories"
+                            },
+                            legend:{
+                              cursor: "pointer",
+                              itemclick: explodePie
+                            },
+                            data: [{
+                              type: "pie",
+                              showInLegend: true,
+                              toolTipContent: "{name}: <strong>{y}%</strong>",
+                              indexLabel: "{name} - {y}%",
+                              dataPoints: [
+                                //Data Populated from database and represented by the pie chart from patients records
+
+                                { y:
+                                  <?php
+                                                //code for getting all inpatients 
+                                                $result ="SELECT count(*)  FROM patients where p_type = 'InPatient' || p_type='Isolation Patient' ";
+                                                $stmt = $mysqli->prepare($result);
+                                                $stmt->execute();
+                                                $stmt->bind_result($in);
+                                                $stmt->fetch();
+                                                $stmt->close();?>
+                                 <?php echo $in;?>, name: "In Patients", exploded: true },
+
+                                { y
+                                  <?php
+                                                //code for getting all inpatients 
+                                                $result ="SELECT count(*)  FROM patients where p_type = 'OutPatient'  ";
+                                                $stmt = $mysqli->prepare($result);
+                                                $stmt->execute();
+                                                $stmt->bind_result($out);
+                                                $stmt->fetch();
+                                                $stmt->close();?>
+                                  : <?php echo $out;?>, name: "Out Patients" }
+                                
+                              ]
+                            }]
+                          });
+                          chart.render();
+                          }
+
+                          function explodePie (e) {
+                            if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+                              e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+                            } else {
+                              e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+                            }
+                            e.chart.render();
+
+                          }
+                      </script>
                 </div>
-                <div class="card-body table-responsive">
-                  <table class="table table-striped table-borderless">
-                    <thead>
-                      <tr>
-                        <th style="width:20%;">Name</th>
-                        <th style="width:20%;">Department</th>
-                      </tr>
-                    </thead>
-                    <?php
-                                            
-                        $ret="SELECT * FROM departments ORDER BY RAND() LIMIT 100  ";
-                        $stmt= $mysqli->prepare($ret) ;
-                        //$stmt->bind_param('i',$aid);
-                        $stmt->execute() ;//ok
-                        $res=$stmt->get_result();
-                        $cnt=1;
-                        while($row=$res->fetch_object())
-                          {
-                    	?>
-                    <tbody class="no-border-x">
-                      <tr>
-                        <td class="text-success"><?php echo $row->dept_name;?></td>
-                        <td class="text-success"><?php echo $row->dept_head;?></td>
-                      </tr>                     
-                    </tbody>
-                    <?php $cnt= $cnt+1; }?>
-                  </table>
-                </div>
+              
               </div>
             </div>
           </div>
@@ -215,97 +250,75 @@ $aid=$_SESSION['admin_id'];
             </div>
           </div>
           <div class="row">
-            <div class="col-12 col-lg-6">
-              <div class="widget be-loading">
-                
-                <div class="widget-chart-container">
-                  <div id="chartContainer" style="height: 295px; width: 100%;"></div>
-                  
-                  <!--Wackass Javascript But It Aint Shit-->
-                    <script>
-                          window.onload = function () {
-
-                          var chart = new CanvasJS.Chart("chartContainer", {
-                            exportEnabled: true,
-                            animationEnabled: true,
-                            title:{
-                              text: "Patient Numbers By Categories"
-                            },
-                            legend:{
-                              cursor: "pointer",
-                              itemclick: explodePie
-                            },
-                            data: [{
-                              type: "pie",
-                              showInLegend: true,
-                              toolTipContent: "{name}: <strong>{y}%</strong>",
-                              indexLabel: "{name} - {y}%",
-                              dataPoints: [
-                                //Data Populated from database and represented by the pie chart from patients records
-
-                                { y:
-                                  <?php
-                                                //code for getting all inpatients 
-                                                $result ="SELECT count(*)  FROM patients where p_type = 'InPatient' || p_type='Isolation Patient' ";
-                                                $stmt = $mysqli->prepare($result);
-                                                $stmt->execute();
-                                                $stmt->bind_result($in);
-                                                $stmt->fetch();
-                                                $stmt->close();?>
-                                 <?php echo $in;?>, name: "In Patients", exploded: true },
-
-                                { y
-                                  <?php
-                                                //code for getting all inpatients 
-                                                $result ="SELECT count(*)  FROM patients where p_type = 'OutPatient'  ";
-                                                $stmt = $mysqli->prepare($result);
-                                                $stmt->execute();
-                                                $stmt->bind_result($out);
-                                                $stmt->fetch();
-                                                $stmt->close();?>
-                                  : <?php echo $out;?>, name: "Out Patients" }
-                                
-                              ]
-                            }]
-                          });
-                          chart.render();
-                          }
-
-                          function explodePie (e) {
-                            if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
-                              e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
-                            } else {
-                              e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
-                            }
-                            e.chart.render();
-
-                          }
-                      </script>
-                </div>
-              
-              </div>
-            </div>
-            <div class="col-12 col-lg-6">
+          <div class="col-12 col-lg-6">
               <div class="card card-table">
                 <div class="card-header">
-                  <div class="title">Administrative Settings</div>
+                  <div class="title">Senior Departmental Employees</div>
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-striped table-borderless">
                     <thead>
                       <tr>
-                        <th style="width:40%;">Setting</th>
-                        <th style="width:40%;">Description</th>
-                        <th style="width:20%;">Action</th>
+                        <th style="width:20%;">Department Name</th>
+                        <th style="width:20%;">Department Head</th>
                       </tr>
                     </thead>
+                    <?php
+                                            
+                        $ret="SELECT * FROM departments ORDER BY RAND() LIMIT 100  ";
+                        $stmt= $mysqli->prepare($ret) ;
+                        //$stmt->bind_param('i',$aid);
+                        $stmt->execute() ;//ok
+                        $res=$stmt->get_result();
+                        $cnt=1;
+                        while($row=$res->fetch_object())
+                          {
+                    	?>
                     <tbody class="no-border-x">
                       <tr>
-                      <td class="text-success">Modules Permission</td>
-                        <td>This Setting Gives An Employee Authority To Manage Some Modules</td>
-                        <td class="actions"><a class="icon" href="#"><i class="mdi mdi-send-check"></i></a></td>
+                        <td><?php echo $row->dept_name;?></td>
+                        <td><?php echo $row->dept_head;?></td>
                       </tr>                     
                     </tbody>
+                    <?php $cnt= $cnt+1; }?>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6">
+              <div class="card card-table">
+                <div class="card-header">
+                  <div class="title">Coporative Assets</div>
+                </div>
+                <div class="card-body table-responsive">
+                  <table class="table table-striped table-borderless">
+                    <thead>
+                      <tr>
+                        <th style="width:40%;">Name</th>
+                        <th style="width:40%;">Department</th>
+                        <th style="width:20%;">Status</th>
+                      </tr>
+                    </thead>
+                    <?php
+                                            
+                      $ret="SELECT * FROM assets ORDER BY RAND() LIMIT 100  ";
+                      $stmt= $mysqli->prepare($ret) ;
+                      //$stmt->bind_param('i',$aid);
+                      $stmt->execute() ;//ok
+                      $res=$stmt->get_result();
+                      $cnt=1;
+                      while($row=$res->fetch_object())
+                        {
+                    ?>
+                    <tbody class="no-border-x">
+                      <tr>
+                      <td class="text-success"><?php echo $row->name;?></td>
+                      <td><?php echo $row->department;?></td>
+                      <td><?php echo $row->status;?></td>                        
+                      </tr>                     
+                    </tbody>
+                        <?php }?>
+
                   </table>
                 </div>
               </div>
