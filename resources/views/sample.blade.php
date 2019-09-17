@@ -102,7 +102,7 @@
 						<h3 class="pricing-title">Departmental Head</h3>
 						<p class="pricing-sentence">Email: <span class="badge badge-pill badge-success"><b>departmentalhead@ohcms.com</b></span></p>
 						<p class="pricing-sentence">Password: <span class="badge badge-pill badge-success"><b>departmentalhead</b></span></p></br>
-						<a href="#" class="btn btn-default btn-3d btn-icon icon-divider"><i class="fa fa-lock"></i>Log In</a>
+						<a href="../public/Modules/DepartmentHead/dept_head_login.php" class="btn btn-default btn-3d btn-icon icon-divider"><i class="fa fa-lock"></i>Log In</a>
 					</div>
 			    </div>
 				<div class="col-md-4">

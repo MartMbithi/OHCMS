@@ -3,14 +3,12 @@ session_start();
 include('assets/configs/config.php');
 include('assets/configs/checklogin.php');
 check_login();
-$aid=$_SESSION['admin_id'];
+$aid=$_SESSION['dept_id'];
             if(isset($_POST['add_dept']))
         {
         
         $dept_name=$_POST['dept_name'];
         $dept_head=$_POST['dept_head'];
-        $dept_head_email=$_POST['dept_head_email'];
-        $dept_head_password=sha1($_POST['dept_head_password']);
         $dept_desc =$_POST['dept_desc'];
         //$department=$_POST['department'];
         //$status=$_POST['status'];
@@ -20,10 +18,10 @@ $aid=$_SESSION['admin_id'];
        // move_uploaded_file($_FILES["cover"]["tmp_name"],"assets/img/cover/".$_FILES["cover"]["name"]);
         
     //sql to inset the values to the database
-        $query="insert into departments  (dept_name, dept_head, dept_head_email, dept_head_password, dept_desc) values(?,?,?,?,?)";
+        $query="insert into departments  (dept_name, dept_head, dept_desc) values(?,?,?)";
         $stmt = $mysqli->prepare($query);
         //bind the submitted values with the matching columns in the database.
-        $rc=$stmt->bind_param('sssss', $dept_name, $dept_head, $dept_head_email, $dept_head_password, $dept_desc);
+        $rc=$stmt->bind_param('sss', $dept_name, $dept_head, $dept_desc);
         $stmt->execute();
         //if binding is successful, then indicate that a new value has been added.
         $msg = "Department Added";
@@ -50,7 +48,7 @@ $aid=$_SESSION['admin_id'];
             <div class="col-md-12">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="ohcms_pages_admin_dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="ohcms_pages_dept_head_dashboard.php">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="#">Department</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Create</li>
               </ol>
@@ -74,25 +72,13 @@ $aid=$_SESSION['admin_id'];
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Department Name</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" required id="inputText3" name="dept_name" type="text">
+                        <input class="form-control" id="inputText3" name="dept_name" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Department Head</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" required id="inputText3" name="dept_head" type="text">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Department Head Email Adddress</label>
-                      <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" required id="inputText3" name="dept_head_email" type="text">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Department Head Password</label>
-                      <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" name="dept_head_password" type="password">
+                        <input class="form-control" id="inputText3" name="dept_head" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
