@@ -288,7 +288,7 @@ $aid=$_SESSION['admin_id'];
             <div class="col-12 col-lg-6">
               <div class="card card-table">
                 <div class="card-header">
-                  <div class="title">Coporative Assets</div>
+                  <div class="title">Coporation Assets</div>
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-striped table-borderless">

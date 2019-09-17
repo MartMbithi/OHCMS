@@ -20,6 +20,13 @@ $aid=$_SESSION['admin_id'];
         <div class="main-content container-fluid">
         <div class="row">
             <div class="col-sm-12">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="ohcms_pages_admin_dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">Pharmacy</a></li>
+                <li class="breadcrumb-item active" aria-current="page">InPatient Prescriptions</li>
+              </ol>
+            </nav>
               <div class="card card-table">
                 <div class="card-header">Advanced Patients Prescription Records.
                   <div class="tools dropdown">

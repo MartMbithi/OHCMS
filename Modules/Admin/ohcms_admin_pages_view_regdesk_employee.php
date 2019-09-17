@@ -23,6 +23,13 @@ $aid=$_SESSION['admin_id'];
         <div class="main-content container-fluid">
           <div class="row">
             <div class="col-12 col-lg-12">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="ohcms_pages_admin_dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">Registration Desk</a></li>
+                <li class="breadcrumb-item active" aria-current="page">View Registration Desk Employee</li>
+              </ol>
+            </nav>
               <div class="card card-table">
                 <div class="card-header">
                   <div class="title">Registration Desk Employees</div>

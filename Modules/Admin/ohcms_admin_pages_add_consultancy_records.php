@@ -46,6 +46,13 @@ $aid=$_SESSION['admin_id'];
         <div class="main-content container-fluid">
         <div class="row">
             <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="ohcms_pages_admin_dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">Consultation</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Add Consultation Record </li>
+              </ol>
+            </nav>
               <div class="card card-border-color card-border-color-primary">
                 <div class="card-header card-header-divider">Consultation <span class="card-subtitle">Please fill required details.</span></div>
                 <div class="card-body">

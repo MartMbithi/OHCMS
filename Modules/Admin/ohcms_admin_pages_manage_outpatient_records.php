@@ -34,9 +34,16 @@ if(isset($_GET['del']))
         <div class="main-content container-fluid">
           <div class="row">
             <div class="col-12 col-lg-12">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="ohcms_pages_admin_dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">Out Patients</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Manage Out Patient Record</li>
+              </ol>
+            </nav>
               <div class="card card-table">
                 <div class="card-header">
-                  <div class="title">OutPatient Employees</div>
+                  <div class="title">OutPatient Records</div>
                 </div>
                 <?php if(isset($msg)) {?>
                     <script>

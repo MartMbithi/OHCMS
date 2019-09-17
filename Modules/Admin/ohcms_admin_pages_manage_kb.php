@@ -30,6 +30,13 @@ if(isset($_GET['del']))
         <div class="main-content container-fluid">
         <div class="row">
             <div class="col-sm-12">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="ohcms_pages_admin_dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">Knowledge Base</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Manage</li>
+              </ol>
+            </nav>
               <div class="card card-table">
                 <div class="card-header">Manage Knowledge Base Records
                   <div class="tools dropdown">
