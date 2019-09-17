@@ -72,12 +72,13 @@
                   <div class="form-group row login-tools">
                     <div class="col-6 login-forgot-password"><a href="ohcms_pages_admin_password_reset.php">Forgot Password?</a></div>
                   </div>
+                  
                   <div class="form-group login-submit"><input type="submit" class="btn btn-primary btn-xl" name="login" data-dismiss="modal" value="Sign In"></div>
                 </form>
 
               </div>
             </div>
-          <!--  <div class="splash-footer"><span>Don't have an account? <a href="ohcms_pages_admin_signup.php">Sign Up</a></span></div>-->
+          <div class="splash-footer"><span><a href="../../../public/">Home</a></span></div>
           </div>
         </div>
       </div>
