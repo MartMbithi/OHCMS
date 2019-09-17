@@ -14,6 +14,8 @@ $aid=$_SESSION['admin_id'];
         $em_address=($_POST['em_address']);
         $em_phone=$_POST['em_phone'];
         $em_dept=$_POST['em_dept'];
+        $password=sha1($_POST['password']);
+
         //$=$_POST['location'];
         //$website=$_POST['website'];
         //$bio=$_POST['bio'];
@@ -24,13 +26,13 @@ $aid=$_SESSION['admin_id'];
        // move_uploaded_file($_FILES["cover"]["tmp_name"],"assets/img/cover/".$_FILES["cover"]["name"]);
         
     //sql to inset the values to the database
-        $query="insert into hospital_employees  (em_fname, em_lname, em_idno, em_email, em_address, em_phone, em_dept) values(?,?,?,?,?,?,?)";
+        $query="insert into hospital_employees  (em_fname, em_lname, em_idno, em_email, em_address, em_phone, em_dept, password) values(?,?,?,?,?,?,?,?)";
         $stmt = $mysqli->prepare($query);
         //bind the submitted values with the matching columns in the database.
-        $rc=$stmt->bind_param('sssssss', $em_fname, $em_lname, $em_idno, $em_email, $em_address, $em_phone, $em_dept);
+        $rc=$stmt->bind_param('ssssssss', $em_fname, $em_lname, $em_idno, $em_email, $em_address, $em_phone, $em_dept, $password);
         $stmt->execute();
         //if binding is successful, then indicate that a new value has been added.
-        $msg = "Consultation Employee Added!";
+        $msg = "Employee Added!";
   
     }
 ?>
@@ -55,12 +57,12 @@ $aid=$_SESSION['admin_id'];
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="ohcms_pages_admin_dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="#">Consultation</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Consultant</li>
+                <li class="breadcrumb-item"><a href="#">Laboratory</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Add Laboratory Employee Record</li>
               </ol>
             </nav>
               <div class="card card-border-color card-border-color-primary">
-                <div class="card-header card-header-divider">Add Consultation Employee<span class="card-subtitle">Please fill required details.</span></div>
+                <div class="card-header card-header-divider">Add Laboratory Employee<span class="card-subtitle">Please fill required details.</span></div>
                 <div class="card-body">
                 <?php if(isset($msg)) 
                  {?>
@@ -100,6 +102,12 @@ $aid=$_SESSION['admin_id'];
                       </div>
                     </div>
                     <div class="form-group row">
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Password</label>
+                      <div class="col-12 col-sm-8 col-lg-6">
+                        <input class="form-control" id="inputText3" name="password" type="password">
+                      </div>
+                    </div>
+                    <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Address</label>
                       <div class="col-12 col-sm-8 col-lg-6">
                         <input class="form-control" id="inputText3" name="em_address" type="text">
@@ -114,7 +122,7 @@ $aid=$_SESSION['admin_id'];
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Department</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" readonly value="Consultation" name="em_dept" type="text">
+                        <input class="form-control" id="inputText3" readonly value="Laboratory" name="em_dept" type="text">
                       </div>
                     </div>
                     <div class="col-sm-6">
