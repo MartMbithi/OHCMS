@@ -3,15 +3,12 @@ session_start();
 include('assets/configs/config.php');
 include('assets/configs/checklogin.php');
 check_login();
-$aid=$_SESSION['admin_id'];
-            if(isset($_POST['add_dept']))
+$aid=$_SESSION['dept_id'];
+            if(isset($_POST['update_password']))
         {
-        
-        $dept_name=$_POST['dept_name'];
-        $dept_head=$_POST['dept_head'];
-        $dept_head_email=$_POST['dept_head_email'];
-        $dept_head_password=sha1($_POST['dept_head_password']);
-        $dept_desc =$_POST['dept_desc'];
+        $dept_id=$_SESSION['dept_id'];
+        $dept_head_password=sha1($_POST['password']);
+        //$kb_desc =$_POST['kb_desc'];
         //$department=$_POST['department'];
         //$status=$_POST['status'];
         //$dpic=$_FILES["dpic"]["name"];
@@ -20,13 +17,13 @@ $aid=$_SESSION['admin_id'];
        // move_uploaded_file($_FILES["cover"]["tmp_name"],"assets/img/cover/".$_FILES["cover"]["name"]);
         
     //sql to inset the values to the database
-        $query="insert into departments  (dept_name, dept_head, dept_head_email, dept_head_password, dept_desc) values(?,?,?,?,?)";
+        $query="update department set  dept_head_password=?  where  dept_id=?";
         $stmt = $mysqli->prepare($query);
         //bind the submitted values with the matching columns in the database.
-        $rc=$stmt->bind_param('sssss', $dept_name, $dept_head, $dept_head_email, $dept_head_password, $dept_desc);
+        $rc=$stmt->bind_param('si', $dept_head_password, $dept_id);
         $stmt->execute();
         //if binding is successful, then indicate that a new value has been added.
-        $msg = "Department Added";
+        $msg = "Password Updated";
   
     }
 ?>
@@ -50,13 +47,12 @@ $aid=$_SESSION['admin_id'];
             <div class="col-md-12">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="ohcms_pages_admin_dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="#">Department</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Create</li>
+                <li class="breadcrumb-item"><a href="ohcms_pages_dept_head_dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Update Password</li>
               </ol>
             </nav>
               <div class="card card-border-color card-border-color-primary">
-                <div class="card-header card-header-divider">Create A Department<span class="card-subtitle">Please fill required details.</span></div>
+                <div class="card-header card-header-divider">Change Password<span class="card-subtitle">Please fill required details.</span></div>
                 <div class="card-body">
                 <?php if(isset($msg)) 
                  {?>
@@ -70,45 +66,36 @@ $aid=$_SESSION['admin_id'];
                     <!--Trigger a pretty success alert-->
 
                  <?php } ?>
+                 
                   <form method="POST" >
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Department Name</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Old Password</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" required id="inputText3" name="dept_name" type="text">
+                        <input class="form-control" id="inputText3"   type="password">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Department Head</label>
-                      <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" required id="inputText3" name="dept_head" type="text">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Department Head Email Adddress</label>
-                      <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" required id="inputText3" name="dept_head_email" type="text">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Department Head Password</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">New Password</label>
                       <div class="col-12 col-sm-8 col-lg-6">
                         <input class="form-control" id="inputText3" name="dept_head_password" type="password">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Department Description</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Confirm Password</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3" name="dept_desc" type="text"></textarea>
+                        <input class="form-control" id="inputText3" name="password conf" type="password">
                       </div>
-                    </div>                      
+                    </div>
+                    
                     <div class="col-sm-6">
                         <p class="text-right">
-                          <button class="btn btn-space btn-primary" name="add_dept" type="submit">Save</button>
+                          <button class="btn btn-space btn-primary" name="update_password" type="submit">Save</button>
                           <button class="btn btn-space btn-secondary">Cancel</button>
                         </p>
                       </div>
                     </div>
                   </form>
+                    
                 </div>
               </div>
             </div>

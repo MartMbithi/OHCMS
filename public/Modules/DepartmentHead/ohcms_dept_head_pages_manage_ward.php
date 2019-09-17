@@ -3,30 +3,32 @@ session_start();
 include('assets/configs/config.php');
 include('assets/configs/checklogin.php');
 check_login();
-$aid=$_SESSION['admin_id'];
-            if(isset($_POST['add_dept']))
+$aid=$_SESSION['dept_id'];
+            if(isset($_POST['update_ward_record']))
         {
-        
-        $dept_name=$_POST['dept_name'];
-        $dept_head=$_POST['dept_head'];
-        $dept_head_email=$_POST['dept_head_email'];
-        $dept_head_password=sha1($_POST['dept_head_password']);
-        $dept_desc =$_POST['dept_desc'];
-        //$department=$_POST['department'];
-        //$status=$_POST['status'];
+            $ward_id=$_GET['ward_id'];
+            $ward_name=$_POST['ward_name'];
+            $ward_desc=$_POST['ward_desc'];
+            $bed_number=$_POST['bed_number'];
+            $ward_type=$_POST['ward_type'];
+            //$created_at=$_POST['created_at'];
+        //$=$_POST['location'];
+        //$website=$_POST['website'];
+        //$bio=$_POST['bio'];
+        //$skill=$_POST['skill'];
         //$dpic=$_FILES["dpic"]["name"];
         //move_uploaded_file($_FILES["dpic"]["tmp_name"],"assets/img/".$_FILES["dpic"]["name"]);
         //$cover=$_FILES["cover"]["name"];
        // move_uploaded_file($_FILES["cover"]["tmp_name"],"assets/img/cover/".$_FILES["cover"]["name"]);
         
     //sql to inset the values to the database
-        $query="insert into departments  (dept_name, dept_head, dept_head_email, dept_head_password, dept_desc) values(?,?,?,?,?)";
+        $query="update wards set ward_name=?, ward_desc=?, bed_number=?, ward_type=?  where ward_id=?";
         $stmt = $mysqli->prepare($query);
         //bind the submitted values with the matching columns in the database.
-        $rc=$stmt->bind_param('sssss', $dept_name, $dept_head, $dept_head_email, $dept_head_password, $dept_desc);
+        $rc=$stmt->bind_param('ssssi', $ward_name, $ward_desc, $bed_number, $ward_type, $ward_id);
         $stmt->execute();
         //if binding is successful, then indicate that a new value has been added.
-        $msg = "Department Added";
+        $msg = "Ward Record Updated!";
   
     }
 ?>
@@ -50,13 +52,13 @@ $aid=$_SESSION['admin_id'];
             <div class="col-md-12">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="ohcms_pages_admin_dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="#">Department</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Create</li>
+                <li class="breadcrumb-item"><a href="ohcms_pages_dept_head_dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">Isolation ward</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Update  Ward </li>
               </ol>
             </nav>
               <div class="card card-border-color card-border-color-primary">
-                <div class="card-header card-header-divider">Create A Department<span class="card-subtitle">Please fill required details.</span></div>
+                <div class="card-header card-header-divider">Update Ward Details<span class="card-subtitle">Please fill required details.</span></div>
                 <div class="card-body">
                 <?php if(isset($msg)) 
                  {?>
@@ -70,45 +72,52 @@ $aid=$_SESSION['admin_id'];
                     <!--Trigger a pretty success alert-->
 
                  <?php } ?>
-                  <form method="POST" >
+                 <?php	
+                    $ward_id=$_GET['ward_id'];
+                    $ret="select * from wards where ward_id=?";
+                    //code for getting rooms using a certain id
+                    $stmt= $mysqli->prepare($ret) ;
+                    $stmt->bind_param('i',$ward_id);
+                    $stmt->execute() ;//ok
+                    $res=$stmt->get_result();
+                    //$cnt=1;
+                    while($row=$res->fetch_object())
+                    {
+                ?>
+                <form method="POST" >
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Department Name</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Ward Name</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" required id="inputText3" name="dept_name" type="text">
+                        <input class="form-control" id="inputText3" value = "Isolation Ward" name="ward_name" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Department Head</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Ward Description</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" required id="inputText3" name="dept_head" type="text">
+                        <textarea class="form-control" id="inputText3" name="ward_desc" type="text"><?php echo $row->ward_desc;?></textarea>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Department Head Email Adddress</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Number Of Beds</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" required id="inputText3" name="dept_head_email" type="text">
+                        <input class="form-control" id="inputText3" value="<?php echo $row->bed_number;?>" name="bed_number"  type="text">
                       </div>
-                    </div>
+                    </div> 
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Department Head Password</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Ward Type</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" name="dept_head_password" type="password">
+                        <input class="form-control" id="inputText3" value="<?php echo $row->ward_type;?>" name="ward_type"  type="text">
                       </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Department Description</label>
-                      <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3" name="dept_desc" type="text"></textarea>
-                      </div>
-                    </div>                      
+                    </div>                     
                     <div class="col-sm-6">
                         <p class="text-right">
-                          <button class="btn btn-space btn-primary" name="add_dept" type="submit">Save</button>
-                          <button class="btn btn-space btn-secondary">Cancel</button>
+                          <button class="btn btn-space btn-primary" name="update_ward_record" type="submit">Save</button>
+                          <button  class="btn btn-space btn-secondary">Cancel</button>
                         </p>
                       </div>
                     </div>
-                  </form>
+                </form>
+                    <?php }?>
                 </div>
               </div>
             </div>
