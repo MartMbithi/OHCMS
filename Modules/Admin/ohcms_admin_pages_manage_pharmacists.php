@@ -34,9 +34,16 @@ if(isset($_GET['del']))
         <div class="main-content container-fluid">
           <div class="row">
             <div class="col-12 col-lg-12">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="ohcms_pages_admin_dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">Pharmacy</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Manage Pharmacist</li>
+              </ol>
+            </nav>
               <div class="card card-table">
                 <div class="card-header">
-                  <div class="title">Manage Lab Employees</div>
+                  <div class="title">Manage Pharmacists</div>
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-striped table-borderless">

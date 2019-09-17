@@ -50,6 +50,13 @@ $aid=$_SESSION['admin_id'];
         <div class="main-content container-fluid">
         <div class="row">
             <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="ohcms_pages_admin_dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">Laboratory</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Update Laboratory Patient Tests Record</li>
+              </ol>
+            </nav>
               <div class="card card-border-color card-border-color-primary">
                 <div class="card-header card-header-divider">Laboratory Patient Details<span class="card-subtitle">Please fill required details.</span></div>
                 <div class="card-body">
@@ -94,19 +101,19 @@ $aid=$_SESSION['admin_id'];
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Diagonisis</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3"  name="p_diagonisis" type="text"><?php echo $row->p_diagonisis;?></textarea>
+                        <textarea class="form-control" id="editor"  name="p_diagonisis" type="text"><?php echo $row->p_diagonisis;?></textarea>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Laboratory Tests</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3" value="" name="p_lab_tests" type="text"></textarea>
+                        <textarea class="form-control"  id="editor" value="" name="p_lab_tests" type="text"></textarea>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Laboratory Results</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3" value="" name="p_lab_results" type="text"></textarea>
+                        <textarea class="form-control"  id="editor" value="" name="p_lab_results" type="text"></textarea>
                       </div>
                     </div>
                     
