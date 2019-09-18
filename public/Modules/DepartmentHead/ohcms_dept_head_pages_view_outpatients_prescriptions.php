@@ -68,8 +68,8 @@ $aid=$_SESSION['dept_id'];
                         <td><?php echo $row->p_drug_admin;?></td>
                         <td class="center"><?php echo $row->created_at;?></td>
                         <td>
-                        <a href='ohcms_admin_pages_view_administer_drug_patient.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
-                        <a href='ohcms_admin_pages_administer_drug_patient.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-check-circle"></i></a>
+                        <a href='ohcms_dept_head_pages_view_administer_drug_patient.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
+                        <a href='ohcms_dept_head_pages_administer_drug_patient.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-check-circle"></i></a>
                         </td> 
                       </tr>
                     </tbody>

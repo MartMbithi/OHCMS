@@ -3,7 +3,7 @@ session_start();
 include('assets/configs/config.php');
 include('assets/configs/checklogin.php');
 check_login();
-$aid=$_SESSION['dept_id '];
+//$aid=$_SESSION['dept_id '];
 
 ?>
 

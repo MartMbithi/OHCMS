@@ -3,17 +3,8 @@ session_start();
 include('assets/configs/config.php');
 include('assets/configs/checklogin.php');
 check_login();
-$aid=$_SESSION['dept_id'];
-if(isset($_GET['del']))
-{
-	$id=intval($_GET['del']);
-	$adn="delete from assets where id=?";
-		$stmt= $mysqli->prepare($adn);
-		$stmt->bind_param('i',$id);
-        $stmt->execute();
-        $stmt->close();	   
-        $msg ="Equipment Details Removed";
-}
+//$aid=$_SESSION['dept_id'];
+
 ?>
 
 <!DOCTYPE html>

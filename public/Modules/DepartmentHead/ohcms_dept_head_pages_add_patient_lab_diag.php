@@ -85,7 +85,7 @@ if(isset($_GET['del']))
                         <td><?php echo $row->p_age;?></td>
                         <td><?php echo $row->p_diagonisis;?></td>
                         <td><?php echo $row->created_at;?></td>
-                         <td><a href='ohcms_admin_pages_update_lab_test.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-flask"></i></a></td> 
+                         <td><a href='ohcms_dept_head_pages_update_lab_test.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-flask"></i></a></td> 
                       </tr>                     
                     </tbody>
                     <?php $cnt= $cnt+1; }?>
@@ -141,7 +141,7 @@ if(isset($_GET['del']))
                         <td><?php echo $row->p_diagonisis;?></td>
                         <td><?php echo $row->p_lab_tests;?></td>
                         <td><?php echo $row->p_lab_results;?></td>
-                        <td><a href='ohcms_admin_pages_view_outpatient_lab_results.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a></td>
+                        <td><a href='ohcms_dept_head_pages_view_outpatient_lab_results.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a></td>
                       </tr>                     
                     </tbody>
                     <?php $cnt= $cnt+1; }?>

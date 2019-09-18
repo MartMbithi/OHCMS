@@ -83,8 +83,8 @@ if(isset($_GET['del']))
                         <td><?php echo $row->ward_name;?></td>
                         <td><?php echo $row->ward_desc;?></td>
                         <td><?php echo $row->bed_number;?></td>
-                        <td><a href='ohcms_admin_pages_manage_iward.php?del=<?php echo $row->ward_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
-                            <a href='ohcms_admin_pages_manage_ward.php?ward_id=<?php echo $row->ward_id;?>'><i  class="mdi mdi-check-circle"></i></a>
+                        <td><a href='ohcms_dept_head_pages_manage_iward.php?del=<?php echo $row->ward_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
+                            <a href='ohcms_dept_head_pages_manage_ward.php?ward_id=<?php echo $row->ward_id;?>'><i  class="mdi mdi-check-circle"></i></a>
                         </td> 
                       </tr>                     
                     </tbody>
