@@ -20,7 +20,7 @@ Orion HealthCare Hospital Management System is a web based and opensource Hospit
 4.run: <b>php artisan key:generate</b>.<br>
 5.Move OHCMS project folder to your correspondive server htdocs folder eg: <b>in lampp you move it to <i>/opt/lampp/htdocs/ </i> directory and give it an execution permission that is <i> $ sudo chmod -R 777 OHCMS </i></b><br>
 6.On a web browser open <i>http:127.0.0.1/OHCMS/public/</i>
-7.Create a database called <b><i>OHCMIS</i></b> and import the attached SQL File.
+7.Create a database called <b><i>OHCMIS</i></b> and import the attached SQL File.</br>
 8.Enjoy and Feel free to make any changes :)
 
 ## License
