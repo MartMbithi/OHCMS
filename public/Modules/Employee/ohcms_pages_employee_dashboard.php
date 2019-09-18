@@ -114,7 +114,7 @@ $aid=$_SESSION['em_id'];
                             exportEnabled: true,
                             animationEnabled: true,
                             title:{
-                              text: "Patient Numbers By Categories"
+                              text: "Percentage Patient Numbers By Categories"
                             },
                             legend:{
                               cursor: "pointer",
