@@ -3,21 +3,11 @@ session_start();
 include('assets/configs/config.php');
 include('assets/configs/checklogin.php');
 check_login();
-$aid=$_SESSION['dept_id'];
-if(isset($_GET['del']))
-{
-	$id=intval($_GET['del']);
-	$adn="delete from consultancy where id=?";
-		$stmt= $mysqli->prepare($adn);
-		$stmt->bind_param('i',$id);
-        $stmt->execute();
-        $stmt->close();
-        $msg ="Consulatation Details Removed";
-}
+$aid=$_SESSION['em_id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
+  
 <?php include('includes/header.php');?>
   <body>
     <div class="be-wrapper">
@@ -32,13 +22,13 @@ if(isset($_GET['del']))
             <div class="col-sm-12">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="ohcms_pages_dept_head_dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="#">Consultation</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Advanced  Consultants Records </li>
+                <li class="breadcrumb-item"><a href="ohcms_pages_employee_dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">InPatient</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Advanced Search InPatient Record</li>
               </ol>
             </nav>
               <div class="card card-table">
-                <div class="card-header">Advanced  Consultants Records.
+                <div class="card-header">Advanced Search Patients Records
                   <div class="tools dropdown">
                     <div class="dropdown-menu" role="menu">
                       <div class="dropdown-divider"></div>
@@ -50,15 +40,16 @@ if(isset($_GET['del']))
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>PatientName</th>
+                        <th>Name</th>
+                        <th>Age</th>
                         <th>Address</th>
-                        <th>Mobile Number</th>
+                        <th>Registration Date</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <?php
-
-                        $ret="SELECT * FROM  consultancy  ";
+                        
+                        $ret="SELECT * FROM patients Where p_type = 'InPatient' ";
                         $stmt= $mysqli->prepare($ret) ;
                         //$stmt->bind_param('i',$aid);
                         $stmt->execute() ;//ok
@@ -70,11 +61,13 @@ if(isset($_GET['del']))
                     <tbody>
                       <tr>
                         <td><?php echo $cnt;?></td>
-                        <td><?php echo $row->p_name;?></td>
+                        <td><?php echo $row->p_fname;?> <?php echo $row->p_lname;?></td>
+                        <td><?php echo $row->p_age;?></td>
                         <td><?php echo $row->p_address;?></td>
-                        <td><?php echo $row->p_mobile?></td>
-                        <td><a href='ohcms_dept_head_pages_manage_consultancy_records.php?del=<?php echo $row->id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
-                            <a href='ohcms_dept_head_pages_view_consultation.php?id=<?php echo $row->id;?>'><i  class="mdi mdi-eye-check-outline"></i></a></td>
+                        <td class="center"><?php echo $row->created_at;?></td>
+                        <td>
+                            <a href='ohcms_pages_employee_view_out_patient_details.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
+                        </td> 
                       </tr>
                     </tbody>
                   <?php $cnt=$cnt+1; }?>
@@ -85,7 +78,7 @@ if(isset($_GET['del']))
             </div>
           </div>
       </div>
-
+      
     </div>
     <script src="assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
     <script src="assets/lib/perfect-scrollbar/js/perfect-scrollbar.min.js" type="text/javascript"></script>

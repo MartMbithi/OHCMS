@@ -3,7 +3,7 @@ session_start();
 include('assets/configs/config.php');
 include('assets/configs/checklogin.php');
 check_login();
-$aid=$_SESSION['dept_id'];
+$aid=$_SESSION['em_id'];
 if(isset($_GET['del']))
 {
 	$id=intval($_GET['del']);
@@ -11,13 +11,13 @@ if(isset($_GET['del']))
 		$stmt= $mysqli->prepare($adn);
 		$stmt->bind_param('i',$id);
         $stmt->execute();
-        $stmt->close();
+        $stmt->close();	   
         $msg ="Consulatation Details Removed";
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
+  
 <?php include('includes/header.php');?>
   <body>
     <div class="be-wrapper">
@@ -32,7 +32,7 @@ if(isset($_GET['del']))
             <div class="col-sm-12">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="ohcms_pages_dept_head_dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="ohcms_pages_employee_dashboard.php">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="#">Consultation</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Advanced  Consultants Records </li>
               </ol>
@@ -57,7 +57,7 @@ if(isset($_GET['del']))
                       </tr>
                     </thead>
                     <?php
-
+                        
                         $ret="SELECT * FROM  consultancy  ";
                         $stmt= $mysqli->prepare($ret) ;
                         //$stmt->bind_param('i',$aid);
@@ -73,9 +73,9 @@ if(isset($_GET['del']))
                         <td><?php echo $row->p_name;?></td>
                         <td><?php echo $row->p_address;?></td>
                         <td><?php echo $row->p_mobile?></td>
-                        <td><a href='ohcms_dept_head_pages_manage_consultancy_records.php?del=<?php echo $row->id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
-                            <a href='ohcms_dept_head_pages_view_consultation.php?id=<?php echo $row->id;?>'><i  class="mdi mdi-eye-check-outline"></i></a></td>
-                      </tr>
+                        <td><a href='ohcms_pages_employee_manage_consultancy_records.php?del=<?php echo $row->id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
+                            <a href='ohcms_pages_employee_view_consultation.php?id=<?php echo $row->id;?>'><i  class="mdi mdi-eye-check-outline"></i></a></td>
+                      </tr>   
                     </tbody>
                   <?php $cnt=$cnt+1; }?>
 
@@ -85,7 +85,7 @@ if(isset($_GET['del']))
             </div>
           </div>
       </div>
-
+      
     </div>
     <script src="assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
     <script src="assets/lib/perfect-scrollbar/js/perfect-scrollbar.min.js" type="text/javascript"></script>
