@@ -70,9 +70,9 @@ if(isset($_GET['del']))
                         <td><?php echo $cnt;?></td>
                         <td><?php echo $row->kb_name?></td>
                         <td>
-                            <a href='ohcms_admin_pages_manage_kb.php?del=<?php echo $row->kb_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
-                            <a href='ohcms_admin_pages_update_kb.php?kb_id=<?php echo $row->kb_id;?>'><i  class="mdi mdi-check-circle"></i></a>
-                            <a href='ohcms_admin_pages_view_kb_details.php?kb_id=<?php echo $row->kb_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
+                            <a href='ohcms_dept_head_pages_manage_kb.php?del=<?php echo $row->kb_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
+                            <a href='ohcms_dept_head_pages_update_kb.php?kb_id=<?php echo $row->kb_id;?>'><i  class="mdi mdi-check-circle"></i></a>
+                            <a href='ohcms_dept_head_pages_view_kb_details.php?kb_id=<?php echo $row->kb_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
                         </td> 
                       </tr>
                     </tbody>

@@ -253,19 +253,21 @@ $aid=$_SESSION['dept_id'];
           <div class="col-12 col-lg-6">
               <div class="card card-table">
                 <div class="card-header">
-                  <div class="title">Senior Departmental Employees</div>
+                  <div class="title">Employees Records</div>
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-striped table-borderless">
                     <thead>
                       <tr>
-                        <th style="width:20%;">Department Name</th>
-                        <th style="width:20%;">Department Head</th>
+                        <th style="width:20%;">Name</th>
+                        <th style="width:20%;">ID Number</th>
+                        <th style="width:20%;">Email</th>
+                        <th style="width:20%;">Department</th>
                       </tr>
                     </thead>
                     <?php
                                             
-                        $ret="SELECT * FROM departments ORDER BY RAND() LIMIT 100  ";
+                        $ret="SELECT * FROM hospital_employees ORDER BY RAND() LIMIT 100  ";
                         $stmt= $mysqli->prepare($ret) ;
                         //$stmt->bind_param('i',$aid);
                         $stmt->execute() ;//ok
@@ -276,8 +278,10 @@ $aid=$_SESSION['dept_id'];
                     	?>
                     <tbody class="no-border-x">
                       <tr>
-                        <td><?php echo $row->dept_name;?></td>
-                        <td><?php echo $row->dept_head;?></td>
+                        <td><?php echo $row->em_fname;?> <?php echo $row->em_lname;?></td>
+                        <td><?php echo $row->em_idno;?></td>
+                        <td><?php echo $row->em_email;?></td>
+                        <td><?php echo $row->em_dept;?></td>
                       </tr>                     
                     </tbody>
                     <?php $cnt= $cnt+1; }?>

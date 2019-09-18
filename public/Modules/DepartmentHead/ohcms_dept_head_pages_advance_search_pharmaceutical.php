@@ -69,7 +69,7 @@ $aid=$_SESSION['dept_id'];
                         <td><?php echo $row->pharm_qty;?></td>
                         <td><?php echo $row->pharm_pur_date;?></td>
                         <td><?php echo $row->pharm_exp_date;?></td>
-                           <td> <a href='ohcms_admin_pages_view_single_pharmaceutical.php?pharm_id=<?php echo $row->pharm_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a></td> 
+                           <td> <a href='ohcms_dept_head_pages_view_single_pharmaceutical.php?pharm_id=<?php echo $row->pharm_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a></td> 
                       </tr>                     
                     </tbody>
                     <?php $cnt= $cnt+1; }?>
