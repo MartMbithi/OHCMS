@@ -131,7 +131,7 @@ $aid=$_SESSION['em_id'];
                                 { y:
                                   <?php
                                                 //code for getting all inpatients 
-                                                $result ="SELECT count(*)  FROM patients where p_type = 'InPatient' || p_type='Isolation Patient' ";
+                                                $result ="SELECT count(*)  FROM patients where p_type = 'InPatient'";
                                                 $stmt = $mysqli->prepare($result);
                                                 $stmt->execute();
                                                 $stmt->bind_result($in);
