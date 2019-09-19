@@ -78,7 +78,7 @@
 
               </div>
             </div>
-          <div class="splash-footer"><span><a href="../../../public/">Home</a></span></div>
+          <div class="splash-footer"><span><a href="../">Home</a></span></div>
           </div>
         </div>
       </div>
