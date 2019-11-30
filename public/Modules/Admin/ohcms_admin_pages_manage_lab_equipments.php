@@ -60,10 +60,10 @@ if(isset($_GET['del']))
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th style="width:20%;">Equipent Name</th>
-                        <th style="width:20%;">Description</th>
-                        <th style="width:20%;">Status</th>
-                        <th style="width:20%;">Action</th>
+                        <th>Equipent Name</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <?php
@@ -83,8 +83,8 @@ if(isset($_GET['del']))
                         <td><?php echo $row->name;?></td>
                         <td><?php echo $row->description;?></td>
                         <td><?php echo $row->status;?></td>
-                        <td><a href='ohcms_admin_pages_manage_lab_equipments.php?del=<?php echo $row->id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
-                            <a href='ohcms_admin_pages_manage_singleequipment.php?id=<?php echo $row->id;?>'><i  class="mdi mdi-check-circle"></i></a>
+                        <td><a class="badge badge-danger"  href='ohcms_admin_pages_manage_lab_equipments.php?del=<?php echo $row->id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i> Delete</a>
+                            <a class="badge badge-success" href='ohcms_admin_pages_manage_singleequipment.php?id=<?php echo $row->id;?>'><i  class="mdi mdi-check-circle"></i> Update</a>
                         </td> 
                       </tr>                     
                     </tbody>

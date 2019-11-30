@@ -7,12 +7,12 @@ $aid=$_SESSION['admin_id'];
 if(isset($_GET['del']))
 {
 	$id=intval($_GET['del']);
-	$adn="delete from hospital_employees where em_id=?";
+	$adn="delete from consultancy where id=?";
 		$stmt= $mysqli->prepare($adn);
 		$stmt->bind_param('i',$id);
         $stmt->execute();
         $stmt->close();	   
-        $msg ="Employee Details Removed";
+        $msg ="Deleted";
 }
 ?>
 <!DOCTYPE html>
@@ -45,6 +45,16 @@ if(isset($_GET['del']))
                     </div>
                   </div>
                 </div>
+                <?php if(isset($msg)) {?>
+                    <script>
+                                setTimeout(function () 
+                                { 
+                                    swal("Success!","<?php echo $msg;?>!","success");
+                                },
+                                    100);
+                    </script>
+                  
+                  <?php } ?>
                 <div class="card-body">
                   <table class="table table-striped table-hover table-fw-widget" id="table1">
                     <thead>
@@ -73,8 +83,8 @@ if(isset($_GET['del']))
                         <td><?php echo $row->p_name;?></td>
                         <td><?php echo $row->p_address;?></td>
                         <td><?php echo $row->p_mobile?></td>
-                        <td><a href='ohcms_admin_pages_manage_consultancy_records.php?del=<?php echo $row->id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
-                            <a href='ohcms_admin_pages_view_consultation.php?id=<?php echo $row->id;?>'><i  class="mdi mdi-eye-check-outline"></i></a></td>
+                        <td><a class="badge badge-danger" href='ohcms_admin_pages_manage_consultancy_records.php?del=<?php echo $row->id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i> Delete</a>
+                            <a class="badge badge-success" href='ohcms_admin_pages_view_consultation.php?id=<?php echo $row->id;?>'><i  class="mdi mdi-eye-check-outline"></i> View</a></td>
                       </tr>   
                     </tbody>
                   <?php $cnt=$cnt+1; }?>

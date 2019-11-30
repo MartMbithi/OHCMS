@@ -44,6 +44,16 @@ if(isset($_GET['del']))
                       <div class="dropdown-divider"></div>
                     </div>
                   </div>
+                  <?php if(isset($msg)) {?>
+                    <script>
+                                setTimeout(function () 
+                                { 
+                                    swal("Success!","<?php echo $msg;?>!","success");
+                                },
+                                    100);
+                    </script>
+                  
+                  <?php } ?>
                 </div>
                 <div class="card-body">
                   <table class="table table-striped table-hover table-fw-widget" id="table1">
@@ -75,9 +85,9 @@ if(isset($_GET['del']))
                         <td><?php echo $row->em_address;?></td>
                         <td><?php echo $row->em_phone?></td>
                         <td><?php echo $row->em_idno?></td>
-                        <td><a href='ohcms_admin_pages_manage_regdesk_employee.php?del=<?php echo $row->em_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
-                            <a href='ohcms_admin_pages_manage_single_regdesk_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-check-circle"></i></a>                         
-                            <a href='ohcms_admin_pages_view_single_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a></td>
+                        <td><a class="badge badge-danger" href='ohcms_admin_pages_manage_regdesk_employee.php?del=<?php echo $row->em_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i> Delete</a>
+                            <a class="badge badge-primary" href='ohcms_admin_pages_manage_single_regdesk_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-check-circle"></i> Update</a>                         
+                            <a class="badge badge-success" href='ohcms_admin_pages_view_single_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-eye-check-outline"></i> View</a></td>
                       </tr>   
                     </tbody>
                   <?php $cnt=$cnt+1; }?>

@@ -56,17 +56,17 @@ if(isset($_GET['del']))
                   
                   <?php } ?>
                 <div class="card-body table-responsive">
-                  <table class="table table-striped table-borderless">
+                  <table class="table table-striped">
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th style="width:20%;">Name</th>
+                        <th>Name</th>
                         <th>Category</th>
-                        <th style="width:20%;">Vendor</th>
+                        <th>Vendor</th>
                         <th>Qty</th>
-                        <th style="width:20%;">Purchase Date</th>
-                        <th style="width:20%;">Expiry date</th>
-                        <th style="width:20%;">Action</th>
+                        <th>Purchase Date</th>
+                        <th>Expiry date</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <?php
@@ -89,9 +89,9 @@ if(isset($_GET['del']))
                         <td><?php echo $row->pharm_qty;?></td>
                         <td><?php echo $row->pharm_pur_date;?></td>
                         <td><?php echo $row->pharm_exp_date;?></td>
-                        <td><a href='ohcms_admin_pages_manage_pharmaceutical.php?del=<?php echo $row->pharm_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
-                            <a href='ohcms_admin_pages_manage_singlepharmaceutical.php?pharm_id=<?php echo $row->pharm_id;?>'><i  class="mdi mdi-check-circle"></i></a>
-                            <a href='ohcms_admin_pages_view_single_pharmaceutical.php?pharm_id=<?php echo $row->pharm_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
+                        <td><a class="badge badge-danger" href='ohcms_admin_pages_manage_pharmaceutical.php?del=<?php echo $row->pharm_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i> Delete</a>
+                            <a class="badge badge-primary" href='ohcms_admin_pages_manage_singlepharmaceutical.php?pharm_id=<?php echo $row->pharm_id;?>'><i  class="mdi mdi-check-circle"></i> Update</a>
+                            <a class="badge badge-success" href='ohcms_admin_pages_view_single_pharmaceutical.php?pharm_id=<?php echo $row->pharm_id;?>'><i  class="mdi mdi-eye-check-outline"></i> View</a>
                         </td> 
                       </tr>                     
                     </tbody>

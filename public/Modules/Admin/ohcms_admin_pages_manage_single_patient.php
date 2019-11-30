@@ -14,7 +14,7 @@ $aid=$_SESSION['admin_id'];
             $p_address=($_POST['p_address']);
             $p_diagonisis=$_POST['p_diagonisis'];
             $p_prescription=$_POST['p_prescription'];
-            $p_type=$_POST['p_type'];
+            //$p_type=$_POST['p_type'];
             //$created_at=$_POST['created_at'];
         //$=$_POST['location'];
         //$website=$_POST['website'];
@@ -26,10 +26,10 @@ $aid=$_SESSION['admin_id'];
        // move_uploaded_file($_FILES["cover"]["tmp_name"],"assets/img/cover/".$_FILES["cover"]["name"]);
         
     //sql to inset the values to the database
-        $query="update patients set p_fname=?, p_lname=?, p_age=?, p_ailment=?, p_address=?, p_diagonisis=?, p_prescription=?, p_type=? where p_id=?";
+        $query="update patients set p_fname=?, p_lname=?, p_age=?, p_ailment=?, p_address=?, p_diagonisis=?, p_prescription=? where p_id=?";
         $stmt = $mysqli->prepare($query);
         //bind the submitted values with the matching columns in the database.
-        $rc=$stmt->bind_param('ssssssssi', $p_fname, $p_lname, $p_age, $p_ailment, $p_address, $p_diagonisis, $p_prescription, $p_type, $p_id);
+        $rc=$stmt->bind_param('sssssssi', $p_fname, $p_lname, $p_age, $p_ailment, $p_address, $p_diagonisis, $p_prescription, $p_id);
         $stmt->execute();
         //if binding is successful, then indicate that a new value has been added.
         $msg = "Patient Details Updated!";
@@ -122,13 +122,6 @@ $aid=$_SESSION['admin_id'];
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Prescription</label>
                       <div class="col-12 col-sm-8 col-lg-6">
                         <textarea class="form-control" id="inputText3" value="" name="p_prescription" type="text"><?php echo $row->p_prescription;?></textarea>
-                      </div>
-                    </div>
-                    
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Patient Category</label>
-                      <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" readonly value="OutPatient" name="p_type" type="text">
                       </div>
                     </div>
                     

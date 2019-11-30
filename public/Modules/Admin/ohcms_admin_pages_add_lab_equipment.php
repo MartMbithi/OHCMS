@@ -80,7 +80,7 @@ $aid=$_SESSION['admin_id'];
                         <textarea class="form-control" id="inputText3" name="description" type="text"></textarea>
                       </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" style="display:none">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Equipment department</label>
                       <div class="col-12 col-sm-8 col-lg-6">
                         <input class="form-control" id="inputText3" name="department" value="Laboratory" readonly type="text">
@@ -89,7 +89,7 @@ $aid=$_SESSION['admin_id'];
                    
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Equipment Status</label>
-                      <select class="col-12 col-sm-8 col-lg-6" name="status">
+                      <select class=" form control col-12 col-sm-8 col-lg-6" name="status">
                         <option>Functional</option>
                         <option>Faulty</option>
                       </select>

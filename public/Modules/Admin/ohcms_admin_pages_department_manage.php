@@ -73,8 +73,8 @@ if(isset($_GET['del']))
                         <td><?php echo $row->dept_head?></td>
 
                         <td>
-                            <a href='ohcms_admin_pages_manage_department.php?del=<?php echo $row->dept_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
-                            <a href='ohcms_admin_pages_update_department.php?dept_id=<?php echo $row->dept_id;?>'><i  class="mdi mdi-check-circle"></i></a>
+                            <a class="badge badge-danger" href='ohcms_admin_pages_manage_department.php?del=<?php echo $row->dept_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i> Delete</a>
+                            <a class="badge badge-success " href='ohcms_admin_pages_update_department.php?dept_id=<?php echo $row->dept_id;?>'><i  class="mdi mdi-check-circle"></i> Update</a>
                         </td> 
                       </tr>
                     </tbody>
