@@ -25,7 +25,7 @@ $aid=$_SESSION['admin_id'];
         $query="update patients set p_lab_tests=?, p_lab_results=?, p_diagonisis=? where p_id=?";
         $stmt = $mysqli->prepare($query);
         //bind the submitted values with the matching columns in the database.
-        $rc=$stmt->bind_param('sssi', $p_lab_tests, $p_lab_tests, $p_diagonisis, $p_id);
+        $rc=$stmt->bind_param('sssi', $p_lab_tests, $p_lab_results, $p_diagonisis, $p_id);
         $stmt->execute();
         //if binding is successful, then indicate that a new value has been added.
         $msg = "Patient Laboratory Record Updated!";
@@ -85,13 +85,13 @@ $aid=$_SESSION['admin_id'];
                     {
                 ?>
                   <form method="POST" >
-                    <div class="form-group row">
+                    <div class="form-group row" style="display:none">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">First Name</label>
                       <div class="col-12 col-sm-8 col-lg-6">
                         <input class="form-control" id="inputText3" value ="<?php echo $row->p_fname;?>" name="p_fname" type="text">
                       </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" style="display:none">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Last Name</label>
                       <div class="col-12 col-sm-8 col-lg-6">
                         <input class="form-control" id="inputText3" value="<?php echo $row->p_lname;?>" name="p_lname" type="text">

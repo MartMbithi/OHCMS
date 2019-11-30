@@ -48,7 +48,7 @@
         <div class="main-content container-fluid">
           <div class="splash-container">
             <div class="card card-border-color card-border-color-primary">
-              <div class="card-header"><img class="logo-img" src="assets/img/logo-xx.png" alt="logo" width="102" height="27"><span class="splash-description">Please enter your user information.</span></div>
+              <div class="card-header"><img class="logo-img" src="assets/img/logo-xx.png" alt="logo" width="102" height="27"><span class="splash-description">Administrator Login Please enter your credentials.</span></div>
               <div class="card-body">
                 <!--Code for Triggering an error-->
                 <?php if(isset($error)) {?>
@@ -79,6 +79,7 @@
               </div>
             </div>
           <div class="splash-footer"><span><a href="../">Home</a></span></div>
+          
           </div>
         </div>
       </div>

@@ -66,7 +66,7 @@ $aid=$_SESSION['admin_id'];
                         <td><?php echo $row->p_address;?></td>
                         <td class="center"><?php echo $row->created_at;?></td>
                         <td>
-                            <a href='ohcms_admin_pages_view_out_patient_details.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
+                            <a class="badge badge-success" href='ohcms_admin_pages_view_out_patient_details.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i> View</a>
                         </td> 
                       </tr>
                     </tbody>

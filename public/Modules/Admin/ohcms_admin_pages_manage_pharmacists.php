@@ -50,10 +50,10 @@ if(isset($_GET['del']))
                     <thead>
                       <tr>
                       <th>#</th>
-                        <th style="width:20%;">Employee Name</th>
-                        <th style="width:20%;">Email Address</th>
-                        <th style="width:20%;">Mobile Number</th>
-                        <th style="width:20%;">National ID No.</th>
+                        <th>Employee Name</th>
+                        <th>Email Address</th>
+                        <th>Mobile Number</th>
+                        <th>National ID No.</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -75,9 +75,9 @@ if(isset($_GET['del']))
                         <td><?php echo $row->em_email;?></td>
                         <td><?php echo $row->em_phone;?></td>
                         <td><?php echo $row->em_idno;?></td>
-                        <td><a href='ohcms_admin_pages_manage_pharmacist.php?del=<?php echo $row->em_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
-                            <a href='ohcms_admin_pages_manage_single_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-check-circle"></i></a>
-                            <a href='ohcms_admin_pages_view_single_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
+                        <td><a class="badge badge-danger" href='ohcms_admin_pages_manage_pharmacist.php?del=<?php echo $row->em_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i> Delete</a>
+                            <a class="badge badge-primary" href='ohcms_admin_pages_manage_single_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-check-circle"></i> Update</a>
+                            <a class="badge badge-success" href='ohcms_admin_pages_view_single_employee.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-eye-check-outline"></i> View</a>
                         </td> 
                       </tr>                     
                     </tbody>

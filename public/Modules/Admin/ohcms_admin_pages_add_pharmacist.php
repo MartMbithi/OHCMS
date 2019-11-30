@@ -118,7 +118,7 @@ $aid=$_SESSION['admin_id'];
                         <input class="form-control" id="inputText3" name="em_phone" type="text">
                       </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" style="display:none">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Department</label>
                       <div class="col-12 col-sm-8 col-lg-6">
                         <input class="form-control" id="inputText3" readonly value="Pharmacy" name="em_dept" type="text">
