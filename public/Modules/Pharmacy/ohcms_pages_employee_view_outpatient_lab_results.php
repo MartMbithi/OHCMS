@@ -61,19 +61,24 @@ check_login();
                 </div>
                 <div class="row">
                   <div class="col-lg-12">
-                    <table class="invoice-details">
-                      <tr>
-                        <th style="width:60%;">Laboratory Tests</th>
-                        <th class="amount" style="width:15%;">Laboratory Results</th>
-                      </tr>
-                      <tr>
-                        <td class="description"><?php echo $row->p_lab_tests;?></td>
-                        <td class="amount"><?php echo $row->p_lab_results;?></td>
-                      </tr>
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col">Laboratory Tests</th>
+                          <th scope="col">Laboratory Results</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><?php echo $row->p_lab_tests;?></td>
+                          <td><?php echo $row->p_lab_results;?></td>
+                        </tr>
+                      </tbody>
                     </table>
                   </div>
                 </div>
               </div>
+              <hr>
               <div class="row invoice-footer">
                   <div class="col-lg-12">
                     <button id="print" onclick="printContent('printDetails');" class="btn btn-lg btn-space btn-success">Print</button>

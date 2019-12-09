@@ -85,7 +85,7 @@ if(isset($_GET['del']))
                         <td><?php echo $row->p_age;?></td>
                         <td><?php echo $row->p_diagonisis;?></td>
                         <td><?php echo $row->created_at;?></td>
-                         <td><a href='ohcms_dept_head_pages_update_lab_test.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-flask"></i></a></td> 
+                         <td><a class="badge badge-success" href='ohcms_dept_head_pages_update_lab_test.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-flask"></i> Lab Test</a></td> 
                       </tr>                     
                     </tbody>
                     <?php $cnt= $cnt+1; }?>
@@ -93,7 +93,7 @@ if(isset($_GET['del']))
                 </div>
               </div>
             </div>
-
+            <hr>
             <div class="col-12 col-lg-12">
               <div class="card card-table">
                 <div class="card-header">
@@ -110,7 +110,7 @@ if(isset($_GET['del']))
                   
                   <?php } ?>
                 <div class="card-body table-responsive">
-                  <table class="table table-striped table-borderless">
+                  <table class="table table-striped">
                     <thead>
                       <tr>
                         <th>#</th>
@@ -141,7 +141,7 @@ if(isset($_GET['del']))
                         <td><?php echo $row->p_diagonisis;?></td>
                         <td><?php echo $row->p_lab_tests;?></td>
                         <td><?php echo $row->p_lab_results;?></td>
-                        <td><a href='ohcms_dept_head_pages_view_outpatient_lab_results.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a></td>
+                        <td><a class="badge badge-success" href='ohcms_dept_head_pages_view_outpatient_lab_results.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i> View</a></td>
                       </tr>                     
                     </tbody>
                     <?php $cnt= $cnt+1; }?>

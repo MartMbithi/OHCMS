@@ -74,6 +74,7 @@ check_login();
                   </div>
                 </div>
               </div>
+              <hr>
               <div class="row invoice-footer">
                   <div class="col-lg-12">
                     <button id="print" onclick="printContent('printDetails');" class="btn btn-lg btn-space btn-success">Print</button>

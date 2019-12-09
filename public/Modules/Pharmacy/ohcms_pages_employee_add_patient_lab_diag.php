@@ -71,16 +71,16 @@ if(isset($_GET['del']))
                   
                   <?php } ?>
                 <div class="card-body table-responsive">
-                  <table class="table table-striped table-borderless">
+                  <table class="table table-striped">
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th style="width:20%;">Name</th>
-                        <th style="width:20%;">Age</th>
-                        <th style="width:20%;">Diagonisis</th>
-                        <th style="width:20%;">Lab Test</th>
-                        <th style="width:20%;">Lab Results</th>
-                        <th style="width:20%;">Action</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Diagonisis</th>
+                        <th>Lab Test</th>
+                        <th>Lab Results</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <?php
@@ -94,7 +94,7 @@ if(isset($_GET['del']))
                         while($row=$res->fetch_object())
                           {
                     	?>
-                    <tbody class="no-border-x">
+                    <tbody>
                       <tr>
                         <td><?php echo $cnt;?></td>
                         <td><?php echo $row->p_fname;?> <?php echo $row->p_lname;?></td>
@@ -102,7 +102,7 @@ if(isset($_GET['del']))
                         <td><?php echo $row->p_diagonisis;?></td>
                         <td><?php echo $row->p_lab_tests;?></td>
                         <td><?php echo $row->p_lab_results;?></td>
-                        <td><a href='ohcms_pages_employee_view_outpatient_lab_results.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a></td>
+                        <td><a class="badge badge-success"  href='ohcms_pages_employee_view_outpatient_lab_results.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i> View</a></td>
                       </tr>                     
                     </tbody>
                     <?php $cnt= $cnt+1; }?>

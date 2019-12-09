@@ -85,9 +85,9 @@ if(isset($_GET['del']))
                         <td><?php echo $row->p_age;?></td>
                         <td><?php echo $row->p_address;?></td>
                         <td><?php echo $row->created_at;?></td>
-                        <td><a href='ohcms_admin_pages_manage_outpatient_records.php?del=<?php echo $row->p_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i></a>
-                            <a href='ohcms_admin_pages_manage_single_patient.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-check-circle"></i></a>
-                            <a href='ohcms_admin_pages_view_out_patient_details.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a>
+                        <td><a class="badge badge-danger" href='ohcms_admin_pages_manage_outpatient_records.php?del=<?php echo $row->p_id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i> Delete</a>
+                            <a class="badge badge-primary" href='ohcms_admin_pages_manage_single_patient.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-check-circle"></i> Update</a>
+                            <a class="badge badge-success" href='ohcms_admin_pages_view_out_patient_details.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i> View</a>
 
                         </td> 
                       </tr>                     
