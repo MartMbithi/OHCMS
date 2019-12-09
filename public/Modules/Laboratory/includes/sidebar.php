@@ -29,6 +29,15 @@
                       </li>
                     </ul>
                   </li>
+                  <li class="parent active"><a href="#"><i class="icon mdi mdi-folder-edit"></i><span>Capture Vitals</span></a>
+                    <ul class="sub-menu">
+                      <li><a href="ohcms_employee_pages_add_outpatient_vitals.php">OutPatient Vitals</a>
+                      </li>
+                      <li><a href="ohcms_employee_pages_add_inpatients_vitals.php">InPatient Vitals</a>
+                      <li><a href="ohcms_employee_pages_add_employee_vitals.php">Employee Vitals</a>
+                      </li>
+                    </ul>
+                  </li>
                 </ul>
               </div>
             </div>

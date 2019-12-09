@@ -87,6 +87,33 @@ if(isset($_GET['del']))
                           <td><?php echo $row->p_drug_admin;?></td>
                         </tr>
                       </tbody>
+                      <hr>
+                      <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col">Temperature</th>
+                          <th scope="col">Weight</th>
+                          <th scope="col">Height</th> 	
+                          <th scope="col">Systolic Blood Pressure</th>
+                          <th scope="col">Diastolic Blood Pressure</th>
+                          <th scope="col">HeartBeat Rate</th>
+                          <th scope="col">Respiratory Rate</th>
+
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><?php echo $row->temp;?>°C</td>
+                          <td><?php echo $row->weight;?> Kgs</td>
+                          <td><?php echo $row->height;?> CMs</td>
+                          <td><?php echo $row->sbp?> mmHg</td>
+                          <td><?php echo $row->dbp?> mmHg</td>
+                          <td><?php echo $row->heartrate?> BPM</td>
+                          <td><?php echo $row->respiratoryrate?> BPM</td>
+                        </tr>
+                      </tbody>
+                    </table>
                     </table>
                   </div>
                 </div>
