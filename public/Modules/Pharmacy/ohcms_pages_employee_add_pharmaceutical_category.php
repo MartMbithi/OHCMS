@@ -75,7 +75,7 @@ $aid=$_SESSION['em_id'];
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Pharmaceutical Category</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3" required name="category" type="text"></textarea>
+                        <textarea class="form-control" id="editor" required name="category" type="text"></textarea>
                       </div>
                     </div>
                                       
@@ -95,6 +95,10 @@ $aid=$_SESSION['em_id'];
       </div>
       
     </div>
+    <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
+    <script type="text/javascript">
+      CKEDITOR.replace('editor')
+    </script>
     <script src="assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
     <script src="assets/lib/perfect-scrollbar/js/perfect-scrollbar.min.js" type="text/javascript"></script>
     <script src="assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>

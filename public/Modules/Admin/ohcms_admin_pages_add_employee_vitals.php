@@ -3,16 +3,16 @@ session_start();
 include('assets/configs/config.php');
 include('assets/configs/checklogin.php');
 check_login();
-$aid=$_SESSION['dept_id'];
+$aid=$_SESSION['admin_id'];
 if(isset($_GET['del']))
 {
 	$id=intval($_GET['del']);
-	$adn="delete from assets where id=?";
+	$adn="delete from hospital_employees where em_id=?";
 		$stmt= $mysqli->prepare($adn);
 		$stmt->bind_param('i',$id);
         $stmt->execute();
         $stmt->close();	   
-        $msg ="Equipment Details Removed";
+        $msg ="Employee Details Removed";
 }
 ?>
 
@@ -36,39 +36,40 @@ if(isset($_GET['del']))
             <div class="col-12 col-lg-12">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="ohcms_pages_dept_head_dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="#">Laboratory</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Manage Laboratory Equipent Record</li>
+                <li class="breadcrumb-item"><a href="ohcms_pages_admin_dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">Capture Vitals</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Employee Vitalsc</li>
               </ol>
             </nav>
               <div class="card card-table">
                 <div class="card-header">
-                  <div class="title">Laboratory Equipments</div>
+                  <div class="title">Employee Vitals</div>
                 </div>
                 <?php if(isset($msg)) {?>
                     <script>
                                 setTimeout(function () 
                                 { 
-                                    swal("Success!","<?php echo $msg;?>!","success");
+                                    swal("Success!","<?php echo $msg;?>!","warning");
                                 },
                                     100);
                     </script>
                   
                   <?php } ?>
                 <div class="card-body table-responsive">
-                  <table class="table table-striped">
+                  <table class="table table-striped table-borderless">
                     <thead>
                       <tr>
-                        <th>#</th>
-                        <th style="width:20%;">Equipent Name</th>
-                        <th style="width:20%;">Description</th>
-                        <th style="width:20%;">Status</th>
-                        <th style="width:20%;">Action</th>
+                      <th>#</th>
+                        <th>Employee Name</th>
+                        <th>Email Address</th>
+                        <th>Mobile Number</th>
+                        <th>National ID No.</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <?php
                                             
-                        $ret="SELECT * FROM assets Where department = 'Laboratory' ";
+                        $ret="SELECT * FROM hospital_employees";
                         $stmt= $mysqli->prepare($ret) ;
                         //$stmt->bind_param('i',$aid);
                         $stmt->execute() ;//ok
@@ -79,12 +80,14 @@ if(isset($_GET['del']))
                     	?>
                     <tbody class="no-border-x">
                       <tr>
-                        <td><?php echo $cnt;?></td>
-                        <td><?php echo $row->name;?></td>
-                        <td><?php echo $row->description;?></td>
-                        <td><?php echo $row->status;?></td>
-                        <td><a class="badge badge-danger" href='ohcms_dept_head_pages_manage_lab_equipments.php?del=<?php echo $row->id;?>' onClick= "return confirm('Remove  This Record?');"><i class="mdi mdi-delete"></i> Delete</a>
-                            <a class="badge badge-success" href='ohcms_dept_head_pages_manage_singleequipment.php?id=<?php echo $row->id;?>'><i  class="mdi mdi-check-circle"></i> Update</a>
+                      <td><?php echo $cnt;?></td>
+                        <td><?php echo $row->em_fname;?> <?php echo $row->em_lname;?></td>
+                        <td><?php echo $row->em_email;?></td>
+                        <td><?php echo $row->em_phone;?></td>
+                        <td><?php echo $row->em_idno;?></td>
+                        <td>
+                            <a class="badge badge-primary" href='ohcms_admin_pages_capture_employee_vitals.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-check-circle"></i> Capture Vitals</a>
+                            <a class="badge badge-success" href='ohcms_admin_pages_view_employee_vitals.php?em_id=<?php echo $row->em_id;?>'><i  class="mdi mdi-eye-check-outline"></i> View Vitals</a>
                         </td> 
                       </tr>                     
                     </tbody>
@@ -114,6 +117,7 @@ if(isset($_GET['del']))
     <script src="assets/lib/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
     <script src="assets/lib/canvas/canvasjs.min.js"></script>
     <script src="assets/lib/canvas/jquery.canvasjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script type="text/javascript">
       $(document).ready(function(){
       	//-initialize the javascript

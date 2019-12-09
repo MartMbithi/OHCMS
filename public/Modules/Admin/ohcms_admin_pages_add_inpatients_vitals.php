@@ -23,12 +23,12 @@ $aid=$_SESSION['admin_id'];
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="ohcms_pages_admin_dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="#">Out Patients</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Advance Search Out Patient Record</li>
+                <li class="breadcrumb-item"><a href="#">Capture Vitals</a></li>
+                <li class="breadcrumb-item active" aria-current="page">InPatient Vitals/li>
               </ol>
             </nav>
               <div class="card card-table">
-                <div class="card-header">Advanced Search Patients Records
+                <div class="card-header">In Patients Records
                   <div class="tools dropdown">
                     <div class="dropdown-menu" role="menu">
                       <div class="dropdown-divider"></div>
@@ -49,7 +49,7 @@ $aid=$_SESSION['admin_id'];
                     </thead>
                     <?php
                         
-                        $ret="SELECT * FROM patients Where p_type = 'OutPatient' ";
+                        $ret="SELECT * FROM patients Where p_type = 'InPatient' ";
                         $stmt= $mysqli->prepare($ret) ;
                         //$stmt->bind_param('i',$aid);
                         $stmt->execute() ;//ok
@@ -59,14 +59,15 @@ $aid=$_SESSION['admin_id'];
                           {
                     ?>
                     <tbody>
-                    <tr class="odd gradeX even gradeC odd gradeA ">
+                      <tr>
                         <td><?php echo $cnt;?></td>
                         <td><?php echo $row->p_fname;?> <?php echo $row->p_lname;?></td>
                         <td><?php echo $row->p_age;?></td>
                         <td><?php echo $row->p_address;?></td>
                         <td class="center"><?php echo $row->created_at;?></td>
                         <td>
-                            <a class="badge badge-success" href='ohcms_admin_pages_view_out_patient_details.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i> View</a>
+                            <a class="badge badge-primary" href='ohcms_admin_pages_capture_out_patient_vitals.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-check-circle"></i> Capture Vitals</a>
+                            <a class="badge badge-success" href='ohcms_admin_pages_view_out_patient_vitals.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i> View Vitals</a>
                         </td> 
                       </tr>
                     </tbody>

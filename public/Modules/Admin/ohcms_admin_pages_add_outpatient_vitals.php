@@ -23,12 +23,12 @@ $aid=$_SESSION['admin_id'];
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="ohcms_pages_admin_dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="#">Out Patients</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Advance Search Out Patient Record</li>
+                <li class="breadcrumb-item"><a href="#">Capture Vitals</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Out Patient Record</li>
               </ol>
             </nav>
               <div class="card card-table">
-                <div class="card-header">Advanced Search Patients Records
+                <div class="card-header">Out Patients Records
                   <div class="tools dropdown">
                     <div class="dropdown-menu" role="menu">
                       <div class="dropdown-divider"></div>
@@ -66,7 +66,9 @@ $aid=$_SESSION['admin_id'];
                         <td><?php echo $row->p_address;?></td>
                         <td class="center"><?php echo $row->created_at;?></td>
                         <td>
-                            <a class="badge badge-success" href='ohcms_admin_pages_view_out_patient_details.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i> View</a>
+                            <a class="badge badge-primary" href='ohcms_admin_pages_capture_out_patient_vitals.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-check-circle"></i> Capture Vitals</a>
+                            <a class="badge badge-success" href='ohcms_admin_pages_view_out_patient_vitals.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i> View Vitals</a>
+
                         </td> 
                       </tr>
                     </tbody>

@@ -178,7 +178,7 @@ $aid=$_SESSION['dept_id'];
                   <div class="title">Pharmaceutical Purchases</div>
                 </div>
                 <div class="card-body table-responsive">
-                  <table class="table table-striped table-borderless">
+                  <table class="table table-striped ">
                     <thead>
                       <tr>
                         <th style="width:20%;">Product</th>
@@ -256,7 +256,7 @@ $aid=$_SESSION['dept_id'];
                   <div class="title">Employees Records</div>
                 </div>
                 <div class="card-body table-responsive">
-                  <table class="table table-striped table-borderless">
+                  <table class="table table-striped ">
                     <thead>
                       <tr>
                         <th style="width:20%;">Name</th>
@@ -295,7 +295,7 @@ $aid=$_SESSION['dept_id'];
                   <div class="title">Coporation Assets</div>
                 </div>
                 <div class="card-body table-responsive">
-                  <table class="table table-striped table-borderless">
+                  <table class="table table-striped ">
                     <thead>
                       <tr>
                         <th style="width:40%;">Name</th>

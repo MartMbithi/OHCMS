@@ -3,7 +3,7 @@ session_start();
 include('assets/configs/config.php');
 include('assets/configs/checklogin.php');
 check_login();
-//$aid=$_SESSION['dept_id'];
+$aid=$_SESSION['em_id'];
 
 ?>
 
@@ -34,7 +34,7 @@ check_login();
                     {
                 ?>
       <div class="be-content">
-        <div  class="main-content container-fluid">
+        <div class="main-content container-fluid">
           <div class="row">
             <script>
                 function printContent(el){
@@ -46,38 +46,21 @@ check_login();
                 }
              </script>
             <div class="col-12 col-lg-12">
-              <div id="printDetails" class="invoice">
+
+              <div  id="printDetails" class="invoice">
               
                 <div class="row invoice-header">
                   <div class="col-sm-7">
                     <div class="invoice-logo"></div>
                   </div>
-                  <div class="col-sm-5 invoice-order"><span class="invoice-id">Patient Id #<?php echo $row->p_id;?></span><span class="incoice-date"><?php echo $row->created_at;?></span></div>
+                  <div class="col-sm-5 invoice-order"><span class="invoice-id">Patient Number #<?php echo $row->p_id;?></span></div>
                 </div>
                 <div class="row invoice-data">
-                  <div class="col-sm-5 invoice-person">Name: <span class="name"><?php echo $row->p_fname;?> <?php echo $row->p_lname;?></span>Address :<span><?php echo $row->p_address;?></span> Age :<span><?php echo $row->p_age;?> Years Old</span></div>
+                  <div class="col-sm-5 invoice-person">Name :<span class="name"><?php echo $row->p_fname;?> <?php echo $row->p_lname;?></span>Address :<span><?php echo $row->p_address;?></span>Age:<span><?php echo $row->p_age;?></span></div>
                   <div class="col-sm-2 invoice-payment-direction"></i></div>
-                  <div class="col-sm-5 invoice-person"><span class="name"></span><span></span><span></span><span></span><span></span></div>
+                  <div class="col-sm-5 invoice-person">Date Vitals Captured: <span class="name"><?php echo $row->date_recorded;?></span><span></span><span></span><span></span><span></span></div>
                 </div>
-                <div class="row">
-                  <div class="col-lg-12">
-                    <table class="table table-bordered">
-                        <thead>
-                          <tr>
-                            <th scope="col">Diagonisis</th> 	
-                            <th scope="col">Laboratory Tests</th>
-                            <th scope="col">Laboratory Results</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td><?php echo $row->p_diagonisis;?></td>
-                            <th><?php echo $row->p_lab_tests;?></th>
-                            <td><?php echo $row->p_lab_results;?></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <table class="table table-bordered">
+                <table class="table table-bordered">
                       <thead>
                         <tr>
                           <th scope="col">Temperature</th>
@@ -103,8 +86,6 @@ check_login();
                         </tr>
                       </tbody>
                     </table>
-                  </div>
-                </div>
               </div>
               <hr>
               <div class="row invoice-footer">
