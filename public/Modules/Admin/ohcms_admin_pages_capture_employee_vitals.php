@@ -4,18 +4,17 @@ include('assets/configs/config.php');
 include('assets/configs/checklogin.php');
 check_login();
 $aid=$_SESSION['admin_id'];
-            if(isset($_POST['update_outpatient']))
+            if(isset($_POST['capture_outpatient_vitals']))
         {
-            $p_id=$_GET['p_id'];
-            $p_fname=$_POST['p_fname'];
-            $p_lname=$_POST['p_lname'];
-            $p_age=$_POST['p_age'];
-            $p_ailment=$_POST['p_ailment'];
-            $p_address=($_POST['p_address']);
-            $p_diagonisis=$_POST['p_diagonisis'];
-            $p_prescription=$_POST['p_prescription'];
-            //$p_type=$_POST['p_type'];
-            //$created_at=$_POST['created_at'];
+            $em_id=$_GET['em_id'];
+            $date_recorded=$_POST['date_recorded'];
+            $temp=$_POST['temp'];
+            $weight=$_POST['weight'];
+            $height=($_POST['height']);
+            $sbp=$_POST['sbp'];
+            $dbp=$_POST['dbp'];
+            $heartrate=$_POST['heartrate'];
+            $respiratoryrate=$_POST['respiratoryrate'];
         //$=$_POST['location'];
         //$website=$_POST['website'];
         //$bio=$_POST['bio'];
@@ -25,14 +24,14 @@ $aid=$_SESSION['admin_id'];
         //$cover=$_FILES["cover"]["name"];
        // move_uploaded_file($_FILES["cover"]["tmp_name"],"assets/img/cover/".$_FILES["cover"]["name"]);
         
-    //sql to inset the values to the database
-        $query="update patients set p_fname=?, p_lname=?, p_age=?, p_ailment=?, p_address=?, p_diagonisis=?, p_prescription=? where p_id=?";
+       //sql to inset the values to the database
+        $query="update hospital_employees set date_recorded=?, temp=?, weight=?, height=?, sbp=?, dbp=?, heartrate=?, respiratoryrate=? where em_id=?";
         $stmt = $mysqli->prepare($query);
         //bind the submitted values with the matching columns in the database.
-        $rc=$stmt->bind_param('sssssssi', $p_fname, $p_lname, $p_age, $p_ailment, $p_address, $p_diagonisis, $p_prescription, $p_id);
+        $rc=$stmt->bind_param('ssssssssi',  $date_recorded, $temp, $weight, $height, $sbp, $dbp, $heartrate, $respiratoryrate, $em_id);
         $stmt->execute();
         //if binding is successful, then indicate that a new value has been added.
-        $msg = "Patient Details Updated!";
+        $msg = "Employee Vitals Captured";
   
     }
 ?>
@@ -55,7 +54,7 @@ $aid=$_SESSION['admin_id'];
         <div class="row">
             <div class="col-md-12">
               <div class="card card-border-color card-border-color-primary">
-                <div class="card-header card-header-divider">Update OutPatient Details<span class="card-subtitle">Please fill required details.</span></div>
+                <div class="card-header card-header-divider">Capture Employee Vitals<span class="card-subtitle">Please fill required details.</span></div>
                 <div class="card-body">
                 <?php if(isset($msg)) 
                  {?>
@@ -70,11 +69,11 @@ $aid=$_SESSION['admin_id'];
 
                  <?php } ?>
                  <?php	
-                    $p_id=$_GET['p_id'];
-                    $ret="select * from patients where p_id=?";
+                    $em_id=$_GET['em_id'];
+                    $ret="select * from hospital_employees where em_id=?";
                     //code for getting rooms using a certain id
                     $stmt= $mysqli->prepare($ret) ;
-                    $stmt->bind_param('i',$p_id);
+                    $stmt->bind_param('i',$em_id);
                     $stmt->execute() ;//ok
                     $res=$stmt->get_result();
                     //$cnt=1;
@@ -83,51 +82,62 @@ $aid=$_SESSION['admin_id'];
                 ?>
                   <form method="POST" >
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">First Name</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Name</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value ="<?php echo $row->p_fname;?>" name="p_fname" type="text">
+                        <input class="form-control" id="inputText3" value ="<?php echo $row->em_fname;?> <?php echo $row->em_lname;?> " name="user_name" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Last Name</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Date Vitals Captured</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->p_lname;?>" name="p_lname" type="text">
+                        <input class="form-control" id="inputText3"  name="date_recorded" type="date">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Age</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Temperature(°C)</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->p_age;?>" name="p_age" type="text">
+                        <input class="form-control" id="inputText3"  name="temp" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Address</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Weight (Kgs)</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->p_address;?>" name="p_address" type="text">
+                        <input class="form-control" id="inputText3" name="weight" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Ailment</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Height (Cm)</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" value="<?php echo $row->p_ailment;?>" name="p_ailment" type="text">
+                        <input class="form-control" id="inputText3"  name="height" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Diagonisis</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Mean Systolic Blood Pressure (SBP)</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="editor"  name="p_diagonisis" type="text"><?php echo $row->p_diagonisis;?></textarea>
+                        <input class="form-control" id="inputText3"  name="sbp" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Prescription</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Mean Diastolic Blood Pressure (DBP)</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id=editor1 value="" name="p_prescription" type="text"><?php echo $row->p_prescription;?></textarea>
+                        <input class="form-control" id="inputText3"  name="dbp" type="text">
                       </div>
                     </div>
-                    
+                    <div class="form-group row">
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">HeartBeat Rate</label>
+                      <div class="col-12 col-sm-8 col-lg-6">
+                        <input class="form-control" id="inputText3"  name="heartrate" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Respiratory Rate</label>
+                      <div class="col-12 col-sm-8 col-lg-6">
+                        <input class="form-control" id="inputText3"  name="respiratoryrate" type="text">
+                      </div>
+                    </div>                   
                     <div class="col-sm-6">
                         <p class="text-right">
-                          <button class="btn btn-space btn-primary" name="update_outpatient" type="submit">Upadate OutPatient</button>
+                          <button class="btn btn-space btn-primary" name="capture_outpatient_vitals" type="submit">Capture Vitals</button>
                           <button class="btn btn-space btn-secondary">Cancel</button>
                         </p>
                       </div>
