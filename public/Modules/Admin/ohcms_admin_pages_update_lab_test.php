@@ -75,7 +75,6 @@ $aid=$_SESSION['admin_id'];
                  <?php	
                     $p_id=$_GET['p_id'];
                     $ret="select * from patients where p_id=?";
-                    //code for getting rooms using a certain id
                     $stmt= $mysqli->prepare($ret) ;
                     $stmt->bind_param('i',$p_id);
                     $stmt->execute() ;//ok
@@ -107,13 +106,13 @@ $aid=$_SESSION['admin_id'];
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Laboratory Tests</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control"  id="editor" value="" name="p_lab_tests" type="text"></textarea>
+                        <textarea class="form-control"  id="editor1" value="" name="p_lab_tests" type="text"></textarea>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Laboratory Results</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control"  id="editor" value="" name="p_lab_results" type="text"></textarea>
+                        <textarea class="form-control"  id="editor2" value="" name="p_lab_results" type="text"></textarea>
                       </div>
                     </div>
                     
@@ -150,6 +149,16 @@ $aid=$_SESSION['admin_id'];
     <script src="assets/lib/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
     <script src="assets/lib/canvas/canvasjs.min.js"></script>
     <script src="assets/lib/canvas/jquery.canvasjs.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
+    <script type="text/javascript">
+      CKEDITOR.replace('editor')
+    </script>
+    <script type="text/javascript">
+      CKEDITOR.replace('editor1')
+    </script>
+    <script type="text/javascript">
+      CKEDITOR.replace('editor2')
+    </script>
     <script type="text/javascript">
       $(document).ready(function(){
       	//-initialize the javascript

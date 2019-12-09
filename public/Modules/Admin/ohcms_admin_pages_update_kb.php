@@ -89,7 +89,7 @@ $aid=$_SESSION['admin_id'];
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Knowledge Base Description</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3" name="kb_desc" type="text"><?php echo $row->kb_desc;?></textarea>
+                        <textarea class="form-control" id="editor" name="kb_desc" type="text"><?php echo $row->kb_desc;?></textarea>
                       </div>
                     </div>                      
                     <div class="col-sm-6">
@@ -109,6 +109,10 @@ $aid=$_SESSION['admin_id'];
       </div>
       
     </div>
+    <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
+    <script type="text/javascript">
+      CKEDITOR.replace('editor')
+    </script>
     <script src="assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
     <script src="assets/lib/perfect-scrollbar/js/perfect-scrollbar.min.js" type="text/javascript"></script>
     <script src="assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>

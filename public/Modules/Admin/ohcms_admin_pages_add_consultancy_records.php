@@ -96,7 +96,7 @@ $aid=$_SESSION['admin_id'];
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Patient Consultancy</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3" name="p_consultancy"  type="text"></textarea>
+                        <textarea class="form-control" id="editor" name="p_consultancy"  type="text"></textarea>
                       </div>
                     </div>                     
                     <div class="col-sm-6">
@@ -131,6 +131,10 @@ $aid=$_SESSION['admin_id'];
     <script src="assets/lib/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
     <script src="assets/lib/canvas/canvasjs.min.js"></script>
     <script src="assets/lib/canvas/jquery.canvasjs.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
+    <script type="text/javascript">
+      CKEDITOR.replace('editor')
+    </script>
     <script type="text/javascript">
       $(document).ready(function(){
       	//-initialize the javascript

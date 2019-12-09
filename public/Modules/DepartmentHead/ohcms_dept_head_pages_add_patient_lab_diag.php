@@ -56,7 +56,7 @@ if(isset($_GET['del']))
                   
                   <?php } ?>
                 <div class="card-body table-responsive">
-                  <table class="table table-striped table-borderless">
+                  <table class="table table-striped">
                     <thead>
                       <tr>
                         <th>#</th>

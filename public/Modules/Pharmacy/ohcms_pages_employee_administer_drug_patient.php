@@ -135,19 +135,19 @@ $aid=$_SESSION['em_id'];
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Diagonisis</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3" readonly  name="p_diagonisis" type="text"><?php echo $row->p_diagonisis;?></textarea>
+                        <textarea class="form-control" id="editor" readonly  name="p_diagonisis" type="text"><?php echo $row->p_diagonisis;?></textarea>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Prescription</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3" value="" name="p_prescription" type="text"><?php echo $row->p_prescription;?></textarea>
+                        <textarea class="form-control" id="editor1" value="" name="p_prescription" type="text"><?php echo $row->p_prescription;?></textarea>
                       </div>
                     </div> 
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Drug Administration</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3" value="" name="p_drug_admin" type="text"></textarea>
+                        <textarea class="form-control" id="editor2" value="" name="p_drug_admin" type="text"></textarea>
                       </div>
                     </div>                    
                     <div class="col-sm-6">
@@ -167,6 +167,13 @@ $aid=$_SESSION['em_id'];
       </div>
       
     </div>
+    <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
+    <script type="text/javascript">
+      CKEDITOR.replace('editor')
+      CKEDITOR.replace('editor1')
+      CKEDITOR.replace('editor2')
+      CKEDITOR.replace('editor3')
+    </script>
     <script src="assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
     <script src="assets/lib/perfect-scrollbar/js/perfect-scrollbar.min.js" type="text/javascript"></script>
     <script src="assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>

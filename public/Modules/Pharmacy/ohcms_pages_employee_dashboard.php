@@ -190,7 +190,7 @@ $aid=$_SESSION['em_id'];
                   <div class="title">Pharmaceutical Purchases</div>
                 </div>
                 <div class="card-body table-responsive">
-                  <table class="table table-striped table-borderless">
+                  <table class="table table-striped ">
                     <thead>
                       <tr>
                         <th>Product</th>
@@ -230,7 +230,7 @@ $aid=$_SESSION['em_id'];
                   <div class="title">Coporation Assets</div>
                 </div>
                 <div class="card-body table-responsive">
-                  <table class="table table-striped table-borderless">
+                  <table class="table table-striped ">
                     <thead>
                       <tr>
                         <th style="width:40%;">Name</th>

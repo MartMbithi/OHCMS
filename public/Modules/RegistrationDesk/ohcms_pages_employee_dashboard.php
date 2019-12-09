@@ -82,7 +82,7 @@ $aid=$_SESSION['em_id'];
             <div class="col-12 col-lg-6 col-xl-3">
             <?php
                                 //code for getting all number of pharmaceuticals 
-                                $result ="SELECT count(*) FROM pharmaceuticals";
+                                $result ="SELECT count(*) FROM assets where department ='Registration Desk'";
                                 $stmt = $mysqli->prepare($result);
                                 $stmt->execute();
                                 $stmt->bind_result($pharmaceuticals);
@@ -92,7 +92,7 @@ $aid=$_SESSION['em_id'];
                         <div class="widget widget-tile">
                           <div class="chart sparkline"><i class="large material-icons">add_shopping_cart</i></div>
                           <div class="data-info">
-                            <div class="desc">Pharmaceuticals</div>
+                            <div class="desc">Reg Desk Assets</div>
                             <div class="value"><span class="indicator indicator-equal mdi mdi-chevron-right"></span><span class="number" data-toggle="counter" data-end="<?php echo $pharmaceuticals;?>"><?php echo $pharmaceuticals;?></span>
                             </div>
                           </div>
