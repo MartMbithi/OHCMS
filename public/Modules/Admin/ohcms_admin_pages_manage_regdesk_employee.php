@@ -49,7 +49,7 @@ if(isset($_GET['del']))
                     <script>
                                 setTimeout(function () 
                                 { 
-                                    swal("Success!","<?php echo $msg;?>!","success");
+                                    swal("Success!","<?php echo $msg;?>!","warning");
                                 },
                                     100);
                     </script>
@@ -118,6 +118,7 @@ if(isset($_GET['del']))
     <script src="assets/lib/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
     <script src="assets/lib/canvas/canvasjs.min.js"></script>
     <script src="assets/lib/canvas/jquery.canvasjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script type="text/javascript">
       $(document).ready(function(){
       	//-initialize the javascript

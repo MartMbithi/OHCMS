@@ -9,16 +9,15 @@
                   //$id_no=$_POST['id_no'];
                   $email=$_POST['email'];
                   //$uname=$_POST['uname'];
-                  $token = sha1(mt_rand(1, 90000).$_POST['token']);
                   //$acc_status=$_POST['acc_status'];
                   //$dpic=$_FILES["dpic"]["name"];
                   //move_uploaded_file($_FILES["dpic"]["tmp_name"],"../client/img/".$_FILES["dpic"]["name"]);
                   
               //sql to inset the values to the database
-                  $query="insert into admin_password_resets (email, token) values(?,?)";
+                  $query="insert into password_resets (email, status) values(?,'Pending')";
                   $stmt = $mysqli->prepare($query);
                   //bind the submitted values with the matching columns in the database.
-                  $rc=$stmt->bind_param('ss', $email, $token);
+                  $rc=$stmt->bind_param('s', $email);
                   $stmt->execute();
                   
                   $msg = "Password Reset Details Will Be Sent To Your Email!";
@@ -63,9 +62,6 @@
                   <?php } ?>
 
                 <form method ="post">
-                <div class="form-group">
-                    <input class="form-control" name="token" id="username" type="text" placeholder="Username" autocomplete="off">
-                  </div>
                   <div class="form-group">
                     <input class="form-control" name="email" id="username" type="email" placeholder="Email" autocomplete="off">
                   </div>                                   

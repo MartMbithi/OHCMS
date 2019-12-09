@@ -68,6 +68,7 @@ if(isset($_GET['del']))
                   <div class="col-sm-2 invoice-payment-direction"></i></div>
                   <div class="col-sm-5 invoice-person">Department: <span class="name"><?php echo $row->em_dept;?></span>Email :<span><?php echo $row->em_email;?></span><span></span><span></span><span></span></div>
                 </div>
+                <hr>
                 <div class="row invoice-footer">
                   <div class="col-lg-12">
                     <button id="print" onclick="printContent('printDetails');" class="btn btn-lg btn-space btn-success">Print</button>

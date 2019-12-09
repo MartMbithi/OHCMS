@@ -15,5 +15,3 @@
     <link rel="stylesheet" href="//cdn.materialdesignicons.com/4.4.95/css/materialdesignicons.min.css">
     <script src="assets/lib/sweetjs/swal.js"></script><!--Sweet alert js-->
     <!--CKEDITOR CDN-->    
-    <script src="https://cdn.tiny.cloud/1/ntvgnrkzc6ssrlhiml0rov1vce0nmy9t7a99a3fczybtqlaj/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>tinymce.init({selector:'textarea'});</script>

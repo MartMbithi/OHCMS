@@ -69,7 +69,7 @@ $aid=$_SESSION['em_id'];
                         <td><?php echo $row->pharm_qty;?></td>
                         <td><?php echo $row->pharm_pur_date;?></td>
                         <td><?php echo $row->pharm_exp_date;?></td>
-                           <td> <a href='ohcms_pages_employee_view_single_pharmaceutical.php?pharm_id=<?php echo $row->pharm_id;?>'><i  class="mdi mdi-eye-check-outline"></i></a></td> 
+                           <td> <a class="badge badge-success" href='ohcms_pages_employee_view_single_pharmaceutical.php?pharm_id=<?php echo $row->pharm_id;?>'><i  class="mdi mdi-eye-check-outline"></i> View</a></td> 
                       </tr>                     
                     </tbody>
                     

@@ -1,30 +1,29 @@
-<?php
-  session_start();
-  include('assets/configs/config.php');
-    if(isset($_POST['login']))
-      {
-            $email=$_POST['email'];
-            $password=sha1($_POST['password']);
-            $stmt=$mysqli->prepare("SELECT email,password, admin_id FROM admin WHERE email=? and password=? ");
-            $stmt->bind_param('ss',$email,$password);
-            $stmt->execute();
-            $stmt -> bind_result($email,$password,$admin_id);
-            $rs=$stmt->fetch();
-            $_SESSION['admin_id']=$admin_id;
-            $uip=$_SERVER['REMOTE_ADDR'];
-            $ldate=date('d/m/Y h:i:s', time());
-            if($rs)
+ <!--User sign upphp code-->
+ <?php
+              session_start();
+              include('assets/configs/config.php');
+                  if(isset($_POST['password_reset']))
               {
-                    
-                header("location:ohcms_pages_admin_dashboard.php");
+                  //$fname=$_POST['fname'];
+                // $lname=$_POST['lname'];
+                  //$id_no=$_POST['id_no'];
+                  $email=$_POST['email'];
+                  //$uname=$_POST['uname'];
+                  //$acc_status=$_POST['acc_status'];
+                  //$dpic=$_FILES["dpic"]["name"];
+                  //move_uploaded_file($_FILES["dpic"]["tmp_name"],"../client/img/".$_FILES["dpic"]["name"]);
+                  
+              //sql to inset the values to the database
+                  $query="insert into password_resets (email, status) values(?,'Pending')";
+                  $stmt = $mysqli->prepare($query);
+                  //bind the submitted values with the matching columns in the database.
+                  $rc=$stmt->bind_param('s', $email);
+                  $stmt->execute();
+                  
+                  $msg = "Password Reset Details Will Be Sent To Your Email!";
+                  
               }
-            else
-            {
-              $error = "Please Check Your Email Or Password";
-              
-            }
-        }
-?>
+              ?>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -48,14 +47,14 @@
         <div class="main-content container-fluid">
           <div class="splash-container">
             <div class="card card-border-color card-border-color-primary">
-              <div class="card-header"><img class="logo-img" src="assets/img/logo-xx.png" alt="logo" width="102" height="27"><span class="splash-description">Administrator Login Panel </span></div>
+              <div class="card-header"><img class="logo-img" src="assets/img/logo-xx.png" alt="logo" width="102" height="27"><span class="splash-description">Please enter your username and email address.</span></div>
               <div class="card-body">
                 <!--Code for Triggering an error-->
-                <?php if(isset($error)) {?>
+                <?php if(isset($msg)) {?>
                     <script>
                                 setTimeout(function () 
                                 { 
-                                    swal("Failed!","<?php echo $error;?>!","error");
+                                    swal("Success!","<?php echo $msg;?>!","success");
                                 },
                                     100);
                     </script>
@@ -64,22 +63,16 @@
 
                 <form method ="post">
                   <div class="form-group">
-                    <input class="form-control" name="email" id="username" type="text" placeholder="Email" autocomplete="off">
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" name="password" id="password" type="password" placeholder="Password">
-                  </div>
+                    <input class="form-control" name="email" id="username" type="email" placeholder="Email" autocomplete="off">
+                  </div>                                   
                   <div class="form-group row login-tools">
-                    <div class="col-6 login-forgot-password"><a href="ohcms_pages_admin_password_reset.php">Forgot Password?</a></div>
                   </div>
-                  
-                  <div class="form-group login-submit"><input type="submit" class="btn btn-primary btn-xl" name="login" data-dismiss="modal" value="Sign In"></div>
+                  <div class="form-group login-submit"><input type="submit" class="btn btn-primary btn-xl" name="password_reset" data-dismiss="modal" value="Reset Password"></div>
                 </form>
+                     <div class="splash-footer"><span>Remembered Pssword? <a href="dept_head_login.php">Login</a></span></div>
 
               </div>
             </div>
-          <div class="splash-footer"><span><a href="../">Home</a></span></div>
-          
           </div>
         </div>
       </div>

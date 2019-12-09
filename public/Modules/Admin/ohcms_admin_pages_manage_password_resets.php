@@ -3,7 +3,7 @@ session_start();
 include('assets/configs/config.php');
 include('assets/configs/checklogin.php');
 check_login();
-$aid=$_SESSION['dept_id'];
+$aid=$_SESSION['admin_id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,13 +22,13 @@ $aid=$_SESSION['dept_id'];
             <div class="col-sm-12">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="ohcms_pages_dept_head_dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="#">Pharmacy</a></li>
-                <li class="breadcrumb-item active" aria-current="page">InPatient Prescriptions</li>
+                <li class="breadcrumb-item"><a href="ohcms_pages_admin_dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">Password Resets</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Manage</li>
               </ol>
             </nav>
               <div class="card card-table">
-                <div class="card-header">Advanced Patients Prescription Records.
+                <div class="card-header"> Manage Password Reset
                   <div class="tools dropdown">
                     <div class="dropdown-menu" role="menu">
                       <div class="dropdown-divider"></div>
@@ -40,17 +40,15 @@ $aid=$_SESSION['dept_id'];
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Address</th>
-                        <th>Drug type</th>
-                        <th>Registration Date</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>T. Stamp</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <?php
                         
-                        $ret="SELECT * FROM patients Where p_type = 'InPatient' || p_type='Isolation Patient' ";
+                        $ret="SELECT * FROM `password_resets`  ";
                         $stmt= $mysqli->prepare($ret) ;
                         //$stmt->bind_param('i',$aid);
                         $stmt->execute() ;//ok
@@ -62,14 +60,11 @@ $aid=$_SESSION['dept_id'];
                     <tbody>
                       <tr>
                         <td><?php echo $cnt;?></td>
-                        <td><?php echo $row->p_fname;?> <?php echo $row->p_lname;?></td>
-                        <td><?php echo $row->p_age;?></td>
-                        <td><?php echo $row->p_address;?></td>
-                        <td><?php echo $row->p_drug_admin;?></td>
-                        <td class="center"><?php echo $row->created_at;?></td>
+                        <td><?php echo $row->email;?></td>
+                        <td><?php echo $row->status;?></td>
+                        <td><?php echo $row->t_stamp;?></td>
                         <td>
-                        <a class="badge badge-primary" href='ohcms_dept_head_pages_view_administer_drug_patient.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-eye-check-outline"></i> View</a>
-                        <a class="badge badge-success" href='ohcms_dept_head_pages_administer_drug_patient.php?p_id=<?php echo $row->p_id;?>'><i  class="mdi mdi-check-circle"></i> Administer Drug</a>
+                            <a class="badge badge-success" href='ohcms_admin_pages_reset_pwd.php?id=<?php echo $row->id;?>'><i  class="mdi mdi-eye-check-outline"></i> Approve</a>
                         </td> 
                       </tr>
                     </tbody>

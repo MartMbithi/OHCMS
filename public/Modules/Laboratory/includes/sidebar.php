@@ -15,18 +15,17 @@
                       </li>
                     </ul>
                   </li>
-                  <li class="parent active"><a href="#"><i class="icon mdi mdi-flask"></i><span>Laboratory </span></a>
-                    <ul class="sub-menu">
-                      <li><a href="ohcms_pages_employee_add_patient_lab_diag.php">Patient Diagonisis</a>
-                      </li>
-                      </li>
-                    </ul>
-                  </li>
-
                   <li class="parent active"><a href="#"><i class="icon mdi mdi-hotel"></i><span>InPatient</span></a>
                     <ul class="sub-menu">
                      
                       <li><a href="ohcms_pages_employee_advance_search_inpatients.php"><span class="badge badge-success float-right">New</span>Advanced Search</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="parent active"><a href="#"><i class="icon mdi mdi-flask"></i><span>Laboratory </span></a>
+                    <ul class="sub-menu">
+                      <li><a href="ohcms_pages_employee_add_patient_lab_diag.php">Patient Diagonisis</a>
+                      </li>
                       </li>
                     </ul>
                   </li>

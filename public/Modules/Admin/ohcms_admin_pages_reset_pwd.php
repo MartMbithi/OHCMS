@@ -3,18 +3,12 @@ session_start();
 include('assets/configs/config.php');
 include('assets/configs/checklogin.php');
 check_login();
-$aid=$_SESSION['dept_id'];
-            if(isset($_POST['add_pharmacist']))
+$aid=$_SESSION['admin_id'];
+            if(isset($_POST['reset_pwd']))
         {
-        
-        $em_fname=$_POST['em_fname'];
-        $em_lname=$_POST['em_lname'];
-        $em_idno=$_POST['em_idno'];
-        $em_email=$_POST['em_email'];
-        $em_address=($_POST['em_address']);
-        $em_phone=$_POST['em_phone'];
-        $em_dept=$_POST['em_dept'];
-        $password = sha1($_POST['password']);
+        $id=$_GET['id'];
+       
+        $status=$_POST['status'];
         //$=$_POST['location'];
         //$website=$_POST['website'];
         //$bio=$_POST['bio'];
@@ -25,13 +19,13 @@ $aid=$_SESSION['dept_id'];
        // move_uploaded_file($_FILES["cover"]["tmp_name"],"assets/img/cover/".$_FILES["cover"]["name"]);
         
     //sql to inset the values to the database
-        $query="insert into hospital_employees  (em_fname, em_lname, em_idno, em_email, em_address, em_phone, em_dept, password) values(?,?,?,?,?,?,?,?)";
+        $query="update password_resets set status=? where id=?";
         $stmt = $mysqli->prepare($query);
         //bind the submitted values with the matching columns in the database.
-        $rc=$stmt->bind_param('ssssssss', $em_fname, $em_lname, $em_idno, $em_email, $em_address, $em_phone, $em_dept, $password);
+        $rc=$stmt->bind_param('si', $status, $id);
         $stmt->execute();
         //if binding is successful, then indicate that a new value has been added.
-        $msg = "Employee Added!";
+        $msg = "Password Request Updated!";
   
     }
 ?>
@@ -53,18 +47,11 @@ $aid=$_SESSION['dept_id'];
         <div class="main-content container-fluid">
         <div class="row">
             <div class="col-md-12">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="ohcms_pages_dept_head_dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="#">Pharmacy</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Add Pharmacist</li>
-              </ol>
-            </nav>
               <div class="card card-border-color card-border-color-primary">
-                <div class="card-header card-header-divider">Add Pharmacist<span class="card-subtitle">Please fill required details.</span></div>
+                <div class="card-header card-header-divider">Approve Password Reset Request<span class="card-subtitle">Please fill required details.</span></div>
                 <div class="card-body">
                 <?php if(isset($msg)) 
-                 {?>
+                 {?>status
                     <script>
                         setTimeout(function () 
                         { 
@@ -75,63 +62,44 @@ $aid=$_SESSION['dept_id'];
                     <!--Trigger a pretty success alert-->
 
                  <?php } ?>
+                <?php	
+                    $id=$_GET['id'];
+                    $ret="select * from password_resets where id=?";
+                    //code for getting rooms using a certain id
+                    $stmt= $mysqli->prepare($ret) ;
+                    $stmt->bind_param('i',$id);
+                    $stmt->execute() ;//ok
+                    $res=$stmt->get_result();
+                    //$cnt=1;
+                    while($row=$res->fetch_object())
+                    {
+                ?>
                   <form method="POST" >
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee First Name</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Email Address</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" name="em_fname" type="text">
+                        <input class="form-control" id="inputText3" value="<?php echo $row->email;?>" name="em_fname" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Last Name</label>
+                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Status</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" name="em_lname" type="text">
-                      </div>
+                        <select id="inputState" name="status" class="form-control">
+                                <option selected>Approved</option>
+                                <option>Pending</option>
+                        </select>              
                     </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee National ID Number</label>
-                      <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" name="em_idno" type="text">
-                      </div>
                     </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Email Adddress</label>
-                      <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" name="em_email" type="email">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Password</label>
-                      <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" name="password" type="password">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Address</label>
-                      <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" name="em_address" type="text">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Mobile Phone Number</label>
-                      <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" name="em_phone" type="text">
-                      </div>
-                    </div>
-                    <div class="form-group row" style="display:none">
-                      <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Employee Department</label>
-                      <div class="col-12 col-sm-8 col-lg-6">
-                        <input class="form-control" id="inputText3" readonly value="Pharmacy" name="em_dept" type="text">
-                      </div>
-                    </div>
+                    
                     <div class="col-sm-6">
                         <p class="text-right">
-                          <button class="btn btn-space btn-primary" name="add_pharmacist" type="submit">Add Pharmacist</button>
+                          <button class="btn btn-space btn-primary" name="reset_pwd" type="submit">Approve</button>
                           <button class="btn btn-space btn-secondary">Cancel</button>
                         </p>
                       </div>
                     </div>
                   </form>
+                    <?php }?>
                 </div>
               </div>
             </div>

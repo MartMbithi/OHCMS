@@ -33,7 +33,7 @@ $aid=$_SESSION['em_id'];
                                 $stmt->close();
                   ?>
                         <div class="widget widget-tile">
-                          <div class="chart sparkline" ><i class="material-icons">people_alt</i></div>
+                          <div class="chart sparkline" ><i class="material-icons">hot_tub</i></div>
                           <div class="data-info">
                             <div class="desc">Isolated Patients</div>
                             <div class="value"><span class="indicator indicator-equal mdi mdi-chevron-right"></span><span class="number" data-toggle="counter" data-end="<?php echo $isolated;?>"><?php echo $isolated;?></span>
@@ -82,7 +82,7 @@ $aid=$_SESSION['em_id'];
             <div class="col-12 col-lg-6 col-xl-3">
             <?php
                                 //code for getting all number of pharmaceuticals 
-                                $result ="SELECT count(*) FROM pharmaceuticals";
+                                $result ="SELECT count(*) FROM assets where department ='Laboratory' ";
                                 $stmt = $mysqli->prepare($result);
                                 $stmt->execute();
                                 $stmt->bind_result($pharmaceuticals);
@@ -92,7 +92,7 @@ $aid=$_SESSION['em_id'];
                         <div class="widget widget-tile">
                           <div class="chart sparkline"><i class="large material-icons">add_shopping_cart</i></div>
                           <div class="data-info">
-                            <div class="desc">Pharmaceuticals</div>
+                            <div class="desc">Lab Equipemts</div>
                             <div class="value"><span class="indicator indicator-equal mdi mdi-chevron-right"></span><span class="number" data-toggle="counter" data-end="<?php echo $pharmaceuticals;?>"><?php echo $pharmaceuticals;?></span>
                             </div>
                           </div>
@@ -184,50 +184,10 @@ $aid=$_SESSION['em_id'];
             </div>
           </div>
           <div class="row">
-            <div class="col-12 col-lg-12">
-              <div class="card card-table">
-                <div class="card-header">
-                  <div class="title">Pharmaceutical Purchases</div>
-                </div>
-                <div class="card-body table-responsive">
-                  <table class="table table-striped table-borderless">
-                    <thead>
-                      <tr>
-                        <th>Product</th>
-                        <th>Vendor</th>
-                        <th>Date Purchased</th>
-                        <th>Category</th>
-                      </tr>
-                    </thead>
-                    <?php
-                                            
-                        $ret="SELECT * FROM pharmaceuticals ORDER BY RAND() LIMIT 100  ";
-                        $stmt= $mysqli->prepare($ret) ;
-                        //$stmt->bind_param('i',$aid);
-                        $stmt->execute() ;//ok
-                        $res=$stmt->get_result();
-                        $cnt=1;
-                        while($row=$res->fetch_object())
-                          {
-                    	?>
-                    <tbody class="no-border-x">
-                      <tr>
-                        <td><?php echo $row->pharm_name;?></td>
-                        <td><?php echo $row->pharm_vendor;?></td>
-                        <td><?php echo $row->pharm_pur_date;?></td>
-                        <td><?php echo $row->pharm_cat ;?></td>
-                      </tr>                     
-                    </tbody>
-                    <?php $cnt = $cnt+1; }?>
-                  </table>
-                </div>
-              </div>
-            </div>
-
             <div class="col-12 col-lg-6">
               <div class="card card-table">
                 <div class="card-header">
-                  <div class="title">Coporation Assets</div>
+                  <div class="title">Laboratory Equipments</div>
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-striped table-borderless">
@@ -240,7 +200,7 @@ $aid=$_SESSION['em_id'];
                     </thead>
                     <?php
                                             
-                      $ret="SELECT * FROM assets department ='Laboratory' ORDER BY RAND() LIMIT 100  ";
+                      $ret="SELECT * FROM assets where department ='Laboratory' ORDER BY RAND() LIMIT 100  ";
                       $stmt= $mysqli->prepare($ret) ;
                       //$stmt->bind_param('i',$aid);
                       $stmt->execute() ;//ok
