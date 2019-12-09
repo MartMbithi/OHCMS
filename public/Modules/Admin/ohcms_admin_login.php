@@ -78,8 +78,9 @@
 
               </div>
             </div>
-          <div class="splash-footer"><span><a href="../">Home</a></span></div>
-          
+              <div class="splash-footer"><span>© All Rights Reserved Orion Healthcare Hospital Management System</span></div>
+              <div class="splash-footer"><span>Powered By <a href="https://martmbithi.github.io">MartDevelopers</a></span></div>
+              <div class="splash-footer"><span><a href="../">Home</a></span></div>
           </div>
         </div>
       </div>

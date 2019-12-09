@@ -59,7 +59,7 @@ $aid=$_SESSION['admin_id'];
                           {
                     ?>
                     <tbody>
-                      <tr>
+                    <tr class="odd gradeX even gradeC odd gradeA ">
                         <td><?php echo $cnt;?></td>
                         <td><?php echo $row->p_fname;?> <?php echo $row->p_lname;?></td>
                         <td><?php echo $row->p_age;?></td>

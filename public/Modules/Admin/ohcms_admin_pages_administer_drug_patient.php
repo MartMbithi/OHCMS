@@ -117,13 +117,13 @@ $aid=$_SESSION['admin_id'];
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Lab Tests</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3" readonly value=""  type="text"><?php echo $row->p_lab_tests;?></textarea>
+                        <textarea class="form-control" id="editor5" readonly value=""  type="text"><?php echo $row->p_lab_tests;?></textarea>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Lab Results</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3" readonly value=""  type="text"><?php echo $row->p_lab_results;?></textarea>
+                        <textarea class="form-control" id="editor4" readonly value=""  type="text"><?php echo $row->p_lab_results;?></textarea>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -135,19 +135,19 @@ $aid=$_SESSION['admin_id'];
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Diagonisis</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3" readonly  name="p_diagonisis" type="text"><?php echo $row->p_diagonisis;?></textarea>
+                        <textarea class="form-control" id="editor" readonly  name="p_diagonisis" type="text"><?php echo $row->p_diagonisis;?></textarea>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Prescription</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3" value="" name="p_prescription" type="text"><?php echo $row->p_prescription;?></textarea>
+                        <textarea class="form-control" id="editor2" value="" name="p_prescription" type="text"><?php echo $row->p_prescription;?></textarea>
                       </div>
                     </div> 
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Drug Administration</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="inputText3" value="" name="p_drug_admin" type="text"></textarea>
+                        <textarea class="form-control" id="editor3" value="" name="p_drug_admin" type="text"></textarea>
                       </div>
                     </div>                    
                     <div class="col-sm-6">
@@ -167,6 +167,25 @@ $aid=$_SESSION['admin_id'];
       </div>
       
     </div>
+    <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
+    <script type="text/javascript">
+      CKEDITOR.replace('editor')
+    </script>
+    <script type="text/javascript">
+      CKEDITOR.replace('editor1')
+    </script>
+    <script type="text/javascript">
+      CKEDITOR.replace('editor2')
+    </script>
+    <script type="text/javascript">
+      CKEDITOR.replace('editor3')
+    </script>
+    <script type="text/javascript">
+      CKEDITOR.replace('editor4')
+    </script>
+    <script type="text/javascript">
+      CKEDITOR.replace('editor5')
+    </script>
     <script src="assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
     <script src="assets/lib/perfect-scrollbar/js/perfect-scrollbar.min.js" type="text/javascript"></script>
     <script src="assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>

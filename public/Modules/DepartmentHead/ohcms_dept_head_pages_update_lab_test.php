@@ -101,19 +101,19 @@ $aid=$_SESSION['dept_id'];
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Diagonisis</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control" id="editor"  name="p_diagonisis" type="text"><?php echo $row->p_diagonisis;?></textarea>
+                        <textarea class="form-control" id="editor1"  name="p_diagonisis" type="text"><?php echo $row->p_diagonisis;?></textarea>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Laboratory Tests</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control"  id="editor" value="" name="p_lab_tests" type="text"></textarea>
+                        <textarea class="form-control"  id="editor2" value="" name="p_lab_tests" type="text"></textarea>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputText3">Laboratory Results</label>
                       <div class="col-12 col-sm-8 col-lg-6">
-                        <textarea class="form-control"  id="editor" value="" name="p_lab_results" type="text"></textarea>
+                        <textarea class="form-control"  id="editor3" value="" name="p_lab_results" type="text"></textarea>
                       </div>
                     </div>
                     
@@ -134,6 +134,16 @@ $aid=$_SESSION['dept_id'];
       </div>
       
     </div>
+    <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
+    <script type="text/javascript">
+      CKEDITOR.replace('editor1')
+    </script>
+    <script type="text/javascript">
+      CKEDITOR.replace('editor2')
+    </script>
+    <script type="text/javascript">
+      CKEDITOR.replace('editor3')
+    </script>
     <script src="assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
     <script src="assets/lib/perfect-scrollbar/js/perfect-scrollbar.min.js" type="text/javascript"></script>
     <script src="assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
