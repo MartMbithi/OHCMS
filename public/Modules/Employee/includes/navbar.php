@@ -11,7 +11,7 @@
   {?>
                     <nav class="navbar navbar-expand fixed-top be-top-header">
                             <div class="container-fluid">
-                              <div class="be-navbar-header"><a class="navbar-brand" href="ohcms_pages_admin_dashboard.php"></a>
+                              <div class="be-navbar-header"><a class="navbar-brand" href="ohcms_pages_employee_dashboard.php"></a>
                               </div>
                               <div class="page-title"><span><?php echo $row->em_dept;?> Department`s Dashboard</span></div>
                               <div class="be-right-navbar">
@@ -20,7 +20,7 @@
                                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
                                       <img src="assets/img/avatar.png" alt="Avatar"><span class="user-name"><?php echo $row->em_fname;?> <?php echo $row->em_lname;?></span>
                                     </a>
-                                    <div class="dropdown-menu" role="menu">     
+                                    <div class="dropdown-menu" role="menu">
                                       <div class="user-info">
                                         <div class="user-name"><?php echo $row->em_email;?></div>
                                         <div class="user-position online">online</div>
