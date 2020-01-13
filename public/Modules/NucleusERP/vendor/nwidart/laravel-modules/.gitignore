@@ -1,0 +1,6 @@
+/vendor
+composer.phar
+composer.lock
+/fixture/vendor
+build
+.php_cs.cache

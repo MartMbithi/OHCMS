@@ -1,0 +1,38 @@
+# Prevent Directory Listing
+<IfModule autoindex>
+	IndexIgnore *
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    # Prevent Directory Listing
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Prevent Direct Access to Protected Files
+    <FilesMatch "(?i)(^artisan$|\.env|\.log)">
+        Order deny,allow
+        Deny from all
+    </FilesMatch>
+
+    # Prevent Direct Access To Protected Folders
+    RewriteRule ^(app|bootstrap|config|database|resources|routes|storage|tests)/(.*) / [L,R=301]
+
+    # Prevent Direct Access To modules/vendor Folders Except Assets
+    RewriteRule ^(modules|vendor)/(.*)\.((?!ico|gif|jpg|jpeg|png|js|css|less|sass|font|woff|woff2|eot|ttf|svg).)*$ / [L,R=301]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+</IfModule>

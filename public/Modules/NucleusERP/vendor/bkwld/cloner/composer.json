@@ -1,0 +1,43 @@
+{
+	"name": "bkwld/cloner",
+	"description": "A trait for Laravel Eloquent models that lets you clone of a model and it's relationships, including files.",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Robert Reinhard",
+			"email": "info@bkwld.com"
+		}
+	],
+	"require": {
+		"php": ">=5.5.0",
+		"illuminate/support": "4 - 5"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "~4.7",
+		"bkwld/upchuck": "^2.0@dev",
+		"illuminate/database": "4 - 5",
+		"league/flysystem-vfs": "^1.0",
+		"mockery/mockery": "^0.9.4",
+		"satooshi/php-coveralls": "^1.0"
+	},
+	"suggest": {
+		"bkwld/upchuck": "Required for replicating of files."
+	},
+	"autoload": {
+		"psr-4": {
+			"Bkwld\\Cloner\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Bkwld\\Cloner\\Stubs\\": "stubs/"
+		}
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Bkwld\\Cloner\\ServiceProvider"
+			]
+		}
+	}
+}

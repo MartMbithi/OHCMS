@@ -1,0 +1,47 @@
+{
+    "name": "plank/laravel-mediable",
+    "description": "A package for easily uploading and attaching media files to models with Laravel",
+    "keywords": ["media", "image", "uploader", "eloquent", "laravel"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sean Fraser",
+            "email": "sean@plankdesign.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "^5.2.0",
+        "illuminate/filesystem": "^5.2.0",
+        "illuminate/database": "^5.2.0",
+        "league/flysystem": "^1.0.8",
+        "psr/http-message": "^1.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.0",
+        "phpunit/phpunit": "^5.7",
+        "vlucas/phpdotenv": "^2.2",
+        "league/flysystem-aws-s3-v3" : "^1.0.8",
+        "satooshi/php-coveralls": "^1.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Plank\\Mediable\\": "src/"
+        }
+    },
+    "autoload-dev":{
+        "classmap": ["tests/", "migrations/"]
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Plank\\Mediable\\MediableServiceProvider"
+            ],
+            "aliases": {
+                "MediaUploader": "Plank\\Mediable\\MediaUploaderFacade"
+            }
+        }
+    }
+}

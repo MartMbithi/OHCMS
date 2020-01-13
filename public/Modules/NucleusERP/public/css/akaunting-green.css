@@ -1,0 +1,98 @@
+.nav-tabs-custom>.nav-tabs>li.active {
+    border-top-color: #390f83b2;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #390f83b2 !important;
+}
+
+.form-control:focus {
+    border-color: #390f83b2 !important;
+}
+
+#result-search {
+    border-color: #390f83b2;
+}
+
+#profit {
+    background: #390f83b2;
+}
+
+.info-box .progress .progress-bar.progress-bar-green, .progress-bar-success {
+    background-color: #390f83b2;
+}
+
+/* Bootstrap */
+.btn-success {
+    background-color: #390f83b2;
+    border-color: #1100ff;
+}
+
+.btn-success.hover, .btn-success:hover {
+    background-color: #1100ff;
+}
+
+.btn-success.focus, .btn-success:focus {
+    background-color: #1100ff;
+    border-color: #1100ff;
+}
+
+.btn-success.active, .btn-success:active {
+    background-color: #390f83b2;
+    border-color: #1100ff;
+}
+
+.btn-success.active.focus, .btn-success.active:focus {
+    background-color: #1100ff;
+    border-color: #1100ff;
+}
+
+.bg-green {
+    background-color: #390f83b2 !important;
+}
+
+.alert-success {
+    background-color: #390f83b2 !important;
+    border-color: #1100ff;
+}
+
+.label-success {
+    background-color: #390f83b2 !important;
+}
+
+.box.box-success {
+    border-top-color: #390f83b2;
+}
+
+.box.box-solid.box-success>.box-header {
+    background-color: #390f83b2;
+}
+
+.box.box-solid.box-success {
+    border-color: #1100ff;
+}
+
+.text-green {
+    color: #390f83b2;
+}
+
+/* AdminLTE green skin */
+.skin-green-light .main-header .navbar {
+    background-color: #390f83b2;
+}
+
+.skin-green-light .main-header .navbar .sidebar-toggle:hover {
+    background-color: #1100ff;
+}
+
+.skin-green-light .main-header .logo {
+    background-color: #390f83b2;
+}
+
+.skin-green-light .main-header li.user-header {
+    background-color: #390f83b2;
+}
+
+.skin-green-light .main-header .logo:hover {
+    background-color: #390f83b2;
+}
