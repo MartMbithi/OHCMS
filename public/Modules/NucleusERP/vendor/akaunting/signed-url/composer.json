@@ -1,0 +1,42 @@
+{
+    "name": "akaunting/signed-url",
+    "description": "Signed (unique) URL package for Laravel.",
+    "keywords": [
+        "laravel",
+        "signed",
+        "url",
+        "unique",
+        "unique link",
+        "unique url"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name":"Cüneyt Şentürk",
+            "email":"info@akaunting.com",
+            "homepage":"https://akaunting.com",
+            "role":"Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "spatie/url-signer": "^1.0.1",
+        "illuminate/support": ">=5.2 <5.6.12",
+        "illuminate/http": ">=5.2 <5.6.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "Akaunting\\SignedUrl\\": "./src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Akaunting\\SignedUrl\\Provider"
+            ],
+            "aliases": {
+                "SignedUrl": "Akaunting\\SignedUrl\\Facade"
+            }
+        }
+    }
+}

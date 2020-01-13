@@ -1,0 +1,22 @@
+{
+    "name": "jlawrence/eos",
+    "description": "Parse and solve math equations without using 'eval()'.",
+    "license": "LGPL-2.1+",
+    "keywords": ["EOS","equations","math","solve"],
+    "authors": [
+        {
+            "name": "Jon Lawrence",
+            "email": "jon@jon-lawrence.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "4.*",
+        "codeclimate/php-test-reporter": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "jlawrence\\eos\\": "src/"
+        }
+    }
+}
