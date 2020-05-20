@@ -28,3 +28,11 @@ Orion HealthCare Hospital Management System is a web based and opensource Hospit
 
 
 The OrionHealthCareHospitalManagementSystem is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Contributors
+<a href="https://github.com/MartMbithi/OHCMS/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=MartMbithi/OHCMS" />
+</a>
+
+Made with [contributors-img](https://contributors-img.web.app).
+
