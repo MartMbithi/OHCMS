@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 09, 2019 at 02:19 PM
+-- Generation Time: Jan 26, 2021 at 08:39 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.26
 
@@ -147,9 +147,7 @@ INSERT INTO `hospital_employees` (`em_id`, `em_fname`, `em_lname`, `em_idno`, `e
 (9, 'Laboratory', 'Employee', '127001', 'employee@ohcms.com', 'caf322f0bbed721eac4a36bf7aff1103079faf25', '127001 Localhost', '127001', 'Laboratory', '', '2019-12-09', '37', '78', '156', '90', '90', '87', '50'),
 (10, 'Pharmacist', 'Employee', '127001', 'employee@ohcms.com', 'caf322f0bbed721eac4a36bf7aff1103079faf25', '127001 Localhost', '127001', 'Pharmacy', '', '2019-12-02', '38', '90', '125', '90', '90', '87', '50'),
 (11, 'Isolation', 'Ward Employee', '127001', 'employee@ohcms.com', 'caf322f0bbed721eac4a36bf7aff1103079faf25', '127001', '127001', 'Isolation Ward', '', '', '', '', '', '', '', '', ''),
-(12, 'Consultatant', 'Employee', '127001', 'employee@ohcms.com', 'caf322f0bbed721eac4a36bf7aff1103079faf25', '127001 Localhost', '127001', 'Consultation', '', '', '', '', '', '', '', '', ''),
-(13, 'Perpetual ', 'Ndanu', '35574881', 'papsnd@ohcms.com', 'daddacdcbc186ff7821053c605f723f524321422', '127 001 Localhost', '07040301263', 'Registration Desk', '', '', '', '', '', '', '', '', ''),
-(14, 'Perpetual', 'Ndanu', '35574881', 'papsnd@ohcms.com', '092a86f86f3e9deac56f4fa78f06d67f94cf10df', '127 001 Localhost', '07040301263', 'Pharmacy', '', '', '', '', '', '', '', '', '');
+(12, 'Consultatant', 'Employee', '127001', 'employee@ohcms.com', 'caf322f0bbed721eac4a36bf7aff1103079faf25', '127001 Localhost', '127001', 'Consultation', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -232,9 +230,7 @@ INSERT INTO `patients` (`p_id`, `p_fname`, `p_lname`, `p_age`, `p_address`, `p_a
 (2, 'Second Out', 'Patient', '21', 'Localhost 127.0.0.1', 'TuberCulosis', '<p>Diagnosed With Tuberculosis </p>', 'Saliva, Sputum and Mucus Tested', 'Tuberculosis tested Positive.', 'Antibiotics to counter attack Bacteria infection', 'OutPatient', 'Penincillin and Amoxyll', '2019-09-14', '2019-12-09', '37', '60', '120', '97', '89', '87', '50'),
 (3, 'First', 'InPatient', '20', 'Localhost 127.0.0.1', 'Broken Legs', 'Broken Legs', 'Fracture in Femur Bone', 'Fracture and Crumble in Femur Bone tested positive', 'Intensive Femur born exercise', 'InPatient', 'Morphine Sulphate and DeepHeat', '2019-09-15', '2019-12-09', '67', '98', '145', '90', '89', '67', '12'),
 (4, 'First ', 'Isolation Patient', '20', '127009', '<p>Swine Flu</p>', '<p>Swine Flu</p>', 'Mucus, Urine, Stool and Blood tested ', 'Swine Flu Tested Positive', '<p>Antibiotic drugs</p>', 'Isolation Patient', '<p>Paracetamol and Multivitamin Tablets</p>', '2019-09-18', '', '', '', '', '', '', '', ''),
-(5, 'Second Out', 'Patient', '30', '127010', 'Flu', '<p>Swine Flu</p>', '<p>Body Fluids Tested for any flu infection</p>', '<p>Body Fluids Tested for any flu infection</p>', 'Antibiotics drugs to counter attack flu infections', 'OutPatient', 'Celestamine and FluGone Tablets', '2019-09-18', '', '', '', '', '', '', '', ''),
-(6, 'Martin ', 'Mbithi', '70', '120 Machakos', 'Malaria', '<p>Malaria</p>', 'Blood , Stool, Saliva Tested', 'Malaria tested positive', '<p>Take antibiotics for two weeks</p>', 'InPatient', '<p>Paracetamol</p>', '2019-09-18', '', '', '', '', '', '', '', ''),
-(7, 'Perpetual', 'Ndanu', '20', '127 001 Localhost', 'Colds', 'Flu/Colds', 'Sputum and Saliva Tested ', 'Colds,Flu and dry coughs tested positive', 'Drugs with high contents of anti biotics.', 'OutPatient', 'FluGone Tablets, Amoxyll and Piritons', '2019-11-30', '2019-12-09', '37', '45', '120', '89', '120', '90', '45');
+(5, 'Second Out', 'Patient', '30', '127010', 'Flu', '<p>Swine Flu</p>', '<p>Body Fluids Tested for any flu infection</p>', '<p>Body Fluids Tested for any flu infection</p>', 'Antibiotics drugs to counter attack flu infections', 'OutPatient', 'Celestamine and FluGone Tablets', '2019-09-18', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 

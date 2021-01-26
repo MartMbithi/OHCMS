@@ -1,38 +1,33 @@
 <p align="center"><img src="https://github.com/MartMbithi/OHCMS/blob/master/public/img/brand/logo-black.png"></p>
 
 
-## About Orion HealthCare Hospital Management System
-![main screen 1](https://github.com/MartMbithi/OHCMS/blob/master/main.png)
+## About Orion HealthCare Hospital Information System
 
+Orion HealthCare Hospital Management System is a web based and opensource Hospital Information System crafted with love and passion which targets low level and middle class health care corporations.
 
-Orion HealthCare Hospital Management System is a web based and opensource Hospital Management System crafted with love and passion by MartDevelopers which targets low level and middle class health care corporations.
+## Deployment
+1.Clone repo or download as a zip.<br>
+2.Create a database: <b>OHCMIS</b> and navigate to database directory and import OHCMIS.sql dump file <br>
+3.On a web browser open <i>http:your server name ip address/OHCMS/</i></br>
+4.Enjoy and Feel free to make any changes :)
 
-## How to run #1 using <i>artisan</i>
-1.clone repo or download as a zip.<br>
-2.run: <b>composer install</b>.<br>
-3.naviagate to the root directory and remane <b>.env.example to .env</b> <br>
-4.run: <b>php artisan key:generate</b>.<br>
-5.run: <b>php artisan serve</b>
+## Login Credentials
+```
+1. Administrator
+    Email    : admin@ohcms.com
+    Password : admin
 
-## How to run #2 Using Lampp /Xampp
-1.clone repo or download as a zip.<br>
-2.run: <b>composer install</b>.<br>
-3.naviagate to the root directory and remane <b>.env.example to .env</b> <br>
-4.run: <b>php artisan key:generate</b>.<br>
-5.Move OHCMS project folder to your correspondive server htdocs folder eg: <b>in lampp you move it to <i>/opt/lampp/htdocs/ </i></b> directory and give it an execution permission that is <b><i> $ sudo chmod -R 777 OHCMS </i></b><br>
-6.On a web browser open <i>http:127.0.0.1/OHCMS/public/</i></br>
-7.Create a database called <b><i>OHCMIS</i></b> and import the attached SQL File.</br>
-8.Enjoy and Feel free to make any changes :)
+2. Departmental Heads
+    Email    : departmentalhead@ohcms.com
+    Password : departmentalhead
+
+3. Staff
+    Email    : employee@ohcms.com
+    Password : employee
+```
 
 ## License
 
+The Orion HealthCare Hospital Information System is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-The OrionHealthCareHospitalManagementSystem is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
-## Contributors
-<a href="https://github.com/MartMbithi/OHCMS/graphs/contributors">
-  <img src="https://contributors-img.web.app/image?repo=MartMbithi/OHCMS" />
-</a>
-
-Made with [contributors-img](https://contributors-img.web.app).
 
