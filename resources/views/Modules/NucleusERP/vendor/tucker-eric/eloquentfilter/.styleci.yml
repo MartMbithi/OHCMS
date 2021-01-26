@@ -1,9 +1,0 @@
-preset: laravel
-
-risky: false
-
-finder:
-  exclude:
-    - "config"
-  name:
-    - "*.php"
